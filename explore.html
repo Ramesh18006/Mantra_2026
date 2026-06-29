@@ -1,153 +1,681 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Explore South India </title> <!-- GOOGLE FONT -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
-    rel="stylesheet"> <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore South India</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            list-style: none;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f6f2ed;
+            color: #222;
+            overflow-x: hidden;
+        }
+
+        img {
+            width: 100%;
+            display: block;
+        }
+
+        /* ===================================== */
+        /* NAVBAR */
+        /* ===================================== */
+        .navbar {
+            width: 100%;
+            padding: 22px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: #f6f2ed;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            line-height: 1;
+            color: #0f5b4f;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            color: #222;
+            font-size: 15px;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #0f5b4f;
+        }
+
+        .nav-btn {
+            padding: 14px 24px;
+            border: none;
+            border-radius: 12px;
+            background: #0f5b4f;
+            color: white;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: #0b4239;
+        }
+
+        .menu {
+            display: none;
+            font-size: 35px;
+            cursor: pointer;
+            color: #0f5b4f;
+        }
+
+        /* ===================================== */
+        /* HERO (Optimized for Large Screens) */
+        /* ===================================== */
+        .hero {
+            width: 100%;
+            max-width: 1450px;
+            margin: auto;
+            min-height: calc(100vh - 90px);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            padding: 80px 6%;
+        }
+
+        .hero-left h1 {
+            font-size: clamp(3rem, 5vw, 5rem);
+            line-height: 1.1;
+            color: #0f5b4f;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 30px;
+        }
+
+        .hero-left p {
+            font-size: 18px;
+            line-height: 1.9;
+            margin-bottom: 35px;
+            max-width: 620px;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 620px;
+            background: white;
+            padding: 12px;
+            border-radius: 18px;
+            display: flex;
+            gap: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 18px;
+            font-size: 16px;
+            background: transparent;
+        }
+
+        .search-box button {
+            border: none;
+            background: #0f5b4f;
+            color: white;
+            padding: 18px 28px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .search-box button:hover {
+            background: #0b4239;
+        }
+
+        .hero-right {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 22px;
+            width: 100%;
+        }
+
+        .hero-card {
+            overflow: hidden;
+            border-radius: 22px;
+            height: 260px;
+            background-color: #e5dfd5; /* Fallback color if image is missing */
+        }
+
+        .hero-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .hero-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .tall {
+            height: 542px;
+            grid-row: span 2;
+        }
+
+        /* ===================================== */
+        /* CATEGORY */
+        /* ===================================== */
+        .category {
+            width: 100%;
+            max-width: 1450px;
+            margin: auto;
+            padding: 100px 6%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            color: #0f5b4f;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 70px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .category-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 22px;
+            height: 350px;
+            cursor: pointer;
+            background-color: #e5dfd5;
+        }
+
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .category-card:hover img {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            color: white;
+        }
+
+        .overlay h3 {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* ===================================== */
+        /* DESTINATIONS */
+        /* ===================================== */
+        .destinations {
+            width: 100%;
+            max-width: 1450px;
+            margin: auto;
+            padding: 100px 6%;
+        }
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 35px;
+        }
+
+        .destination-card {
+            background: white;
+            overflow: hidden;
+            border-radius: 24px;
+            transition: 0.4s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .destination-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .destination-card img {
+            height: 280px;
+            width: 100%;
+            object-fit: cover;
+            background-color: #e5dfd5;
+        }
+
+        .destination-content {
+            padding: 30px;
+        }
+
+        .destination-content h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+            color: #0f5b4f;
+        }
+
+        .destination-content p {
+            line-height: 1.9;
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        .destination-content a {
+            color: #0f5b4f;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        
+        .destination-content a:hover {
+            color: #0b4239;
+        }
+
+        /* ===================================== */
+        /* CTA */
+        /* ===================================== */
+        .cta {
+            margin-top: 80px;
+            background: linear-gradient(rgba(15, 91, 79, 0.85), rgba(15, 91, 79, 0.85)), url('https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 160px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta h2 {
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            margin-bottom: 25px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .cta p {
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.9;
+            font-size: 1.1rem;
+        }
+
+        .cta-buttons {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .cta-buttons button {
+            padding: 16px 35px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .primary {
+            background: white;
+            color: #0f5b4f;
+        }
+        
+        .primary:hover {
+            background: #f6f2ed;
+            transform: translateY(-3px);
+        }
+
+        .secondary {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .secondary:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-3px);
+        }
+
+        /* ===================================== */
+        /* FOOTER */
+        /* ===================================== */
+        footer {
+            background: #efe9e2;
+            padding: 90px 6% 30px;
+        }
+
+        .footer-grid {
+            max-width: 1450px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+        }
+
+        .footer-grid h4 {
+            margin-bottom: 20px;
+            color: #0f5b4f;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+        }
+
+        .footer-grid a {
+            display: block;
+            color: #444;
+            margin-bottom: 14px;
+            transition: 0.3s;
+        }
+        
+        .footer-grid a:hover {
+            color: #0f5b4f;
+            padding-left: 5px;
+        }
+
+        .newsletter {
+            display: flex;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .newsletter input {
+            flex: 1;
+            padding: 16px;
+            border: none;
+            outline: none;
+        }
+
+        .newsletter button {
+            width: 60px;
+            border: none;
+            background: #0f5b4f;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .newsletter button:hover {
+            background: #0b4239;
+        }
+
+        .bottom {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            color: #666;
+        }
+
+        /* ===================================== */
+        /* RESPONSIVE DESIGN (Tablets) */
+        /* ===================================== */
+        @media(max-width: 1100px) {
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+                padding-top: 40px;
+            }
+            .hero-left h1 {
+                font-size: 4rem;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* ===================================== */
+        /* RESPONSIVE DESIGN (Mobiles) */
+        /* ===================================== */
+        @media(max-width: 768px) {
+            .menu {
+                display: block;
+            }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                padding-top: 120px;
+                padding-left: 40px;
+                transition: 0.4s ease-in-out;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.08);
+            }
+            .nav-links.active {
+                right: 0;
+            }
+            .nav-btn {
+                display: none;
+            }
+            .search-box {
+                flex-direction: column;
+            }
+            .search-box button {
+                width: 100%;
+            }
+            .hero-right {
+                grid-template-columns: 1fr;
+            }
+            .hero-card {
+                height: 260px;
+            }
+            .tall {
+                height: 320px;
+                grid-row: auto;
+            }
+            .destination-grid, .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
+<body>
 
-<body> <!-- ================ NAVBAR ================= -->
-  <header class="explore-navbar">
-    <div class="explore-logo"> WANDERING <br> SOUTH </div>
-    <nav class="explore-nav-links" id="exploreNavLinks"> <a href="index.html">Home</a> <a href="explore.html"
-        class="active-link">Explore</a> <a href="#">Packages</a> <a href="#">Contact</a> </nav> <button
-      class="journey-btn"> Plan Your Journey </button>
-    <div class="explore-menu-toggle" id="exploreMenuToggle"> ☰ </div>
-  </header> <!-- ================= HERO SECTION ================= -->
-  <section class="explore-hero">
-    <div class="explore-left">
-      <h1> Explore South India <br> Your Way </h1>
-      <p> Choose the experience you love and discover the perfect destinations across Tamil Nadu & Kerala. </p>
-      <!-- SEARCH -->
-      <div class="search-container"> <input type="text" id="searchInput" placeholder="Where would you like to go?">
-        <button> Search </button> <!-- SEARCH SUGGESTIONS -->
-        <div class="suggestions-box" id="suggestionsBox"></div>
-      </div>
-    </div> <!-- RIGHT IMAGE GRID -->
-    <div class="explore-right">
-      <div class="grid-item tall"> <img src="Images/mount.png"> </div>
-      <div class="grid-item"> <img src="Images/mahabalipuram_shore_temple_tamil_nadu_rock_cut_monuments_and_stone_chariots_by.png"> </div>
-      <div class="grid-item"> <img src="Images/beach_view.png"> </div>
-      <div class="grid-item"> <img src="Images/rameshwaram_coastline_where_the_bay_of_bengal_meets_the_indian_ocean_long_beach.png"> </div>
-    </div>
-  </section> <!-- ================= CATEGORY SECTION ================= -->
-  <section class="category-section">
-    <h2> What Kind of Experience Are You Looking For? </h2>
-    <div class="category-grid">
-      <div class="category-card" onclick="filterDestinations('hill')"> <img src="Images/ooty_mountain_station_tamil_nadu_with_a_placid_lake_surrounded_by_quiet_pine.png">
-        <div class="category-overlay">
-          <h3>Hill Stations</h3>
-          <p>Explore</p>
+    <nav class="navbar">
+        <div class="logo">
+            WANDERING <br> SOUTH
         </div>
-      </div>
-      <div class="category-card" onclick="filterDestinations('temple')"> <img src="Images/Temple_piller.png">
-        <div class="category-overlay">
-          <h3>Temples & Spiritual</h3>
-          <p>Explore</p>
+        <div class="nav-links" id="navLinks">
+            <a href="#">Home</a>
+            <a href="#">Explore</a>
+            <a href="#">Packages</a>
+            <a href="#">Contact</a>
         </div>
-      </div>
-      <div class="category-card" onclick="filterDestinations('beach')"> <img src="Images/beach.png">
-        <div class="category-overlay">
-          <h3>Beaches</h3>
-          <p>Explore</p>
+        <button class="nav-btn">Plan Your Journey</button>
+        <div class="menu" id="menu">☰</div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-left">
+            <h1>Explore South India Your Way</h1>
+            <p>
+                Choose the experience you love and discover
+                the perfect destinations across Tamil Nadu
+                & Kerala.
+            </p>
+            <div class="search-box">
+                <input type="text" placeholder="Where would you like to go?">
+                <button>Search</button>
+            </div>
         </div>
-      </div>
-      <div class="category-card" onclick="filterDestinations('backwater')"> <img src="Images/pichavaram_mangroves_tamil_nadu_narrow_water_trails_under_a_canopy_of_mangrove (1).png">
-        <div class="category-overlay">
-          <h3>Backwaters</h3>
-          <p>Explore</p>
+
+        <div class="hero-right">
+            <div class="hero-card tall">
+                <img src="https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=600&q=80" alt="Hills">
+            </div>
+            <div class="hero-card">
+                <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=600&q=80" alt="Temple">
+            </div>
+            <div class="hero-card">
+                <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=600&q=80" alt="Houseboat">
+            </div>
+            <div class="hero-card">
+                <img src="https://images.unsplash.com/photo-1588360982701-d77953259972?auto=format&fit=crop&w=600&q=80" alt="Beach">
+            </div>
         </div>
-      </div>
-      <div class="category-card" onclick="filterDestinations('historic')"> <img src="Images/fort_kochi_streets_kerala_colonial_architecture_with_portuguese_and_dutch.png">
-        <div class="category-overlay">
-          <h3>Historic Places</h3>
-          <p>Explore</p>
+    </section>
+
+    <section class="category">
+        <h2 class="section-title">What Kind Of Experience Are You Looking For?</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=400&q=80" alt="Hill Stations">
+                <div class="overlay">
+                    <h3>Hill Stations</h3>
+                    <p>Explore</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=400&q=80" alt="Temples">
+                <div class="overlay">
+                    <h3>Temples</h3>
+                    <p>Explore</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1588360982701-d77953259972?auto=format&fit=crop&w=400&q=80" alt="Beaches">
+                <div class="overlay">
+                    <h3>Beaches</h3>
+                    <p>Explore</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=400&q=80" alt="Backwaters">
+                <div class="overlay">
+                    <h3>Backwaters</h3>
+                    <p>Explore</p>
+                </div>
+            </div>
+            <div class="category-card">
+                <img src="https://images.unsplash.com/photo-1583244243621-9989f6630095?auto=format&fit=crop&w=400&q=80" alt="Historic">
+                <div class="overlay">
+                    <h3>Historic Places</h3>
+                    <p>Explore</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section> <!-- ================= FEATURED DESTINATIONS ================= -->
-  <section class="featured-section">
-    <div class="featured-top">
-      <div>
-        <h2> Featured Destinations </h2>
-        <p> Handpicked locations for your ultimate luxury escape. </p>
-      </div> <!-- FILTER BUTTONS -->
-      <div class="filter-buttons"> <button onclick="showAll()" class="active-filter"> All </button> <button
-          onclick="filterState('kerala')"> Kerala </button> <button onclick="filterState('tamilnadu')"> Tamil Nadu
-        </button> </div>
-    </div> <!-- DESTINATION CARDS -->
-    <div class="destination-cards" id="destinationCards"> <!-- CARD 1 -->
-      <div class="destination-card hill kerala"> <img src="Images/misty_emerald_tea_estates_in_munnar_kerala_with_lush_green_hills_and_a_wild.png">
-        <div class="destination-content">
-          <h3> Misty Tea Valleys </h3>
-          <p> Wake up to the aroma of fresh tea leaves and drifting clouds through Kerala's hill stations. </p>
-          <div class="destination-footer"> <span>Explore →</span> </div>
+    </section>
+
+    <section class="destinations">
+        <h2 class="section-title">Featured Destinations</h2>
+        <div class="destination-grid">
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=600&q=80" alt="Munnar">
+                <div class="destination-content">
+                    <h3>Munnar</h3>
+                    <p>Tea valleys, misty mountains, luxury resorts and peaceful landscapes.</p>
+                    <a href="#">Explore &rarr;</a>
+                </div>
+            </div>
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=600&q=80" alt="Madurai">
+                <div class="destination-content">
+                    <h3>Madurai</h3>
+                    <p>Ancient temples, spiritual beauty and cultural heritage of Tamil Nadu.</p>
+                    <a href="#">Explore &rarr;</a>
+                </div>
+            </div>
+            <div class="destination-card">
+                <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=600&q=80" alt="Alleppey">
+                <div class="destination-content">
+                    <h3>Alleppey</h3>
+                    <p>Luxury houseboats floating through Kerala's calm backwaters.</p>
+                    <a href="#">Explore &rarr;</a>
+                </div>
+            </div>
         </div>
-      </div> <!-- CARD 2 -->
-      <div class="destination-card temple tamilnadu"> <img src="Images/madurai_meenakshi_temple_tamil_nadu_with_massive_brightly_colored_gopurams_and.png">
-        <div class="destination-content">
-          <h3> Ancient Temples </h3>
-          <p> Step back in time and witness the beauty of Tamil Nadu's historic temples. </p>
-          <div class="destination-footer"> <span>Explore →</span> </div>
+    </section>
+
+    <section class="cta">
+        <h2>Found Your Perfect Destination?</h2>
+        <p>Let us help you plan a memorable South India journey tailored perfectly for you.</p>
+        <div class="cta-buttons">
+            <button class="primary">Plan My Trip</button>
+            <button class="secondary">Contact Us</button>
         </div>
-      </div> <!-- CARD 3 -->
-      <div class="destination-card backwater kerala"> <img src="Images/alleppey_backwaters_kerala_traditional_thatched_roof_houseboat_cruising_through.png">
-        <div class="destination-content">
-          <h3> Venice of the East </h3>
-          <p> Relax in luxury houseboats floating through endless palm-lined backwaters. </p>
-          <div class="destination-footer"> <span>Explore →</span> </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h2 class="logo">WANDERING SOUTH</h2>
+                <p style="margin-top:20px; line-height:1.8;">Cinematic luxury travel experiences across South India.</p>
+            </div>
+            <div>
+                <h4>Explore</h4>
+                <a href="#">Hill Stations</a>
+                <a href="#">Backwaters</a>
+                <a href="#">Temples</a>
+            </div>
+            <div>
+                <h4>Company</h4>
+                <a href="#">About</a>
+                <a href="#">Privacy</a>
+                <a href="#">FAQ</a>
+            </div>
+            <div>
+                <h4>Newsletter</h4>
+                <div class="newsletter">
+                    <input type="email" placeholder="Email">
+                    <button>&rarr;</button>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section> <!-- ================= BENEFITS ================= -->
-  <section class="benefits-section">
-    <div class="benefit-box">
-      <div class="benefit-icon"> 🗺 </div>
-      <h3> Curated Destinations </h3>
-      <p> Every stay and experience is personally vetted for authenticity. </p>
-    </div>
-    <div class="benefit-box">
-      <div class="benefit-icon"> ✦ </div>
-      <h3> Local Expertise </h3>
-      <p> Hidden stories and local secrets brought to life. </p>
-    </div>
-    <div class="benefit-box">
-      <div class="benefit-icon"> ⛺ </div>
-      <h3> Custom Travel Plans </h3>
-      <p> Journeys tailored perfectly to your interests. </p>
-    </div>
-  </section> <!-- ================= CTA SECTION ================= -->
-  <section class="explore-cta">
-    <div class="cta-dark"></div>
-    <div class="explore-cta-content">
-      <h2> Found Your Perfect Destination? </h2>
-      <p> Let us help you plan a smooth and unforgettable South India journey. </p>
-      <div class="cta-btns"> <button class="trip-btn"> Plan My Trip </button> <button class="contact-btn"> Contact Us
-        </button> </div>
-    </div>
-  </section> <!-- ================= FOOTER ================= -->
-  <footer class="explore-footer">
-    <div class="footer-grid">
-      <div>
-        <h2> ScaleLink </h2>
-        <p> Cinematic Luxury Travels across South India. </p>
-      </div>
-      <div>
-        <h4> Popular Regions </h4> <a href="#">Backwaters</a> <a href="#">Hill Stations</a> <a href="#">Cultural
-          Trails</a>
-      </div>
-      <div>
-        <h4> Company </h4> <a href="#">About Us</a> <a href="#">Privacy Policy</a> <a href="#">FAQ</a>
-      </div>
-    </div>
-    <div class="footer-bottom"> © 2026 ScaleLink Tourism </div>
-  </footer> <!-- JS -->
-  <script src="script.js"></script>
+        <div class="bottom">
+            &copy; 2026 Wandering South Tourism
+        </div>
+    </footer>
+
+    <script>
+        const menu = document.getElementById("menu");
+        const navLinks = document.getElementById("navLinks");
+
+        menu.addEventListener("click", () => {
+            navLinks.classList.toggle("active");
+        });
+    </script>
 </body>
-
 </html>
