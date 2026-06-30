@@ -88,7 +88,7 @@
       background: #0b4239;
     }
 
-    .menu {
+    .menu-toggle {
       display: none;
       font-size: 30px;
       cursor: pointer;
@@ -453,7 +453,7 @@
     /* RESPONSIVE DESIGN (Mobiles) */
     /* ===================================== */
     @media(max-width: 768px) {
-      .menu {
+      .menu-toggle {
         display: block;
       }
 
@@ -533,22 +533,18 @@
 
 <body>
 
+  <!-- ================= NAVBAR ================= -->
   <nav class="navbar">
-    <div class="logo">
-      WANDERING <br> SOUTH
-    </div>
-
+    <div class="logo">WANDERING SOUTH</div>
     <div class="nav-links" id="navLinks">
       <span class="close-btn" id="closeBtn">&times;</span>
-
-      <a href="./index.html">Home</a>
-      <a href="./explore.html">Explore</a>
+      <a href="index.html">Home</a>
+      <a href="explore.html">Explore</a>
       <a href="#">Packages</a>
       <a href="#">Contact</a>
     </div>
-
     <button class="nav-btn">Plan Your Journey</button>
-    <div class="menu" id="menu">☰</div>
+    <div class="menu-toggle" id="menuToggle">☰</div>
   </nav>
 
   <section class="hero">
@@ -567,11 +563,11 @@
 
     <div class="hero-right">
       <div class="hero-card tall">
-        <img src="https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=600&q=80"
+        <img src="Images/ooty.png"
           alt="Hills">
       </div>
       <div class="hero-card">
-        <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=600&q=80"
+        <img src="Images/Temple.png"
           alt="Temple">
       </div>
       <div class="hero-card">
@@ -579,7 +575,11 @@
           alt="Houseboat">
       </div>
       <div class="hero-card">
-        <img src="https://images.unsplash.com/photo-1588360982701-d77953259972?auto=format&fit=crop&w=600&q=80"
+        <img src="Images/beach.png"
+          alt="Beach">
+      </div>
+      <div class="hero-card">
+        <img src="Images/sunset.png"
           alt="Beach">
       </div>
     </div>
@@ -589,7 +589,7 @@
     <h2 class="section-title">What Kind Of Experience Are You Looking For?</h2>
     <div class="category-grid">
       <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=400&q=80"
+        <img src="Images/mount.png"
           alt="Hill Stations">
         <div class="overlay">
           <h3>Hill Stations</h3>
@@ -597,7 +597,7 @@
         </div>
       </div>
       <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=400&q=80"
+        <img src="Images/Temple_piller.png"
           alt="Temples">
         <div class="overlay">
           <h3>Temples</h3>
@@ -605,7 +605,7 @@
         </div>
       </div>
       <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1588360982701-d77953259972?auto=format&fit=crop&w=400&q=80"
+        <img src="Images/beach_view.png"
           alt="Beaches">
         <div class="overlay">
           <h3>Beaches</h3>
@@ -613,7 +613,7 @@
         </div>
       </div>
       <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=400&q=80"
+        <img src="Images/pichavaram_mangroves_tamil_nadu_narrow_water_trails_under_a_canopy_of_mangrove (1).png"
           alt="Backwaters">
         <div class="overlay">
           <h3>Backwaters</h3>
@@ -621,7 +621,7 @@
         </div>
       </div>
       <div class="category-card">
-        <img src="https://images.unsplash.com/photo-1583244243621-9989f6630095?auto=format&fit=crop&w=400&q=80"
+        <img src="Images/fort_kochi_streets_kerala_colonial_architecture_with_portuguese_and_dutch.png"
           alt="Historic">
         <div class="overlay">
           <h3>Historic Places</h3>
@@ -635,8 +635,7 @@
     <h2 class="section-title">Featured Destinations</h2>
     <div class="destination-grid">
       <div class="destination-card">
-        <img src="https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=600&q=80"
-          alt="Munnar">
+<img src="Images/misty_emerald_tea_estates_in_munnar_kerala_with_lush_green_hills_and_a_wild.png"  alt="Munnar">
         <div class="destination-content">
           <h3>Munnar</h3>
           <p>Tea valleys, misty mountains, luxury resorts and peaceful landscapes.</p>
@@ -644,7 +643,7 @@
         </div>
       </div>
       <div class="destination-card">
-        <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=600&q=80"
+        <img src="Images/madurai_meenakshi_temple_tamil_nadu_with_massive_brightly_colored_gopurams_and.png"
           alt="Madurai">
         <div class="destination-content">
           <h3>Madurai</h3>
@@ -653,7 +652,7 @@
         </div>
       </div>
       <div class="destination-card">
-        <img src="https://images.unsplash.com/photo-1602216056096-3b40cc0c9944?auto=format&fit=crop&w=600&q=80"
+        <img src="Images/alleppey_backwaters_kerala_traditional_thatched_roof_houseboat_cruising_through.png"
           alt="Alleppey">
         <div class="destination-content">
           <h3>Alleppey</h3>
@@ -697,21 +696,7 @@
     </div>
   </footer>
 
-  <script>
-    const menu = document.getElementById("menu");
-    const navLinks = document.getElementById("navLinks");
-    const closeBtn = document.getElementById("closeBtn");
-
-    // Open Menu
-    menu.addEventListener("click", () => {
-      navLinks.classList.add("active");
-    });
-
-    // Close Menu
-    closeBtn.addEventListener("click", () => {
-      navLinks.classList.remove("active");
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 
 </html>

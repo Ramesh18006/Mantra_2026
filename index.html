@@ -11,14 +11,20 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body> <!-- ================= NAVBAR ================= -->
-  <header class="navbar">
-    <div class="logo"> WANDERING SOUTH </div>
-    <nav class="nav-links" id="navLinks"> <a href="C:\Users\moort\Downloads\south_india_travel\index.html">Home</a> <a
-        href="explore.html">Explore</a> <a href="#">Packages</a> <a
-        href="#">About</a> </nav> <button class="sign-btn"> Sign In </button>
-    <div class="menu-toggle" id="menuToggle"> ☰ </div>
-  </header> <!-- ================= HERO SECTION ================= -->
+<body>
+  <!-- ================= NAVBAR ================= -->
+  <nav class="navbar">
+    <div class="logo">WANDERING SOUTH</div>
+    <div class="nav-links" id="navLinks">
+      <span class="close-btn" id="closeBtn">&times;</span>
+      <a href="index.html">Home</a>
+      <a href="explore.html">Explore</a>
+      <a href="#">Packages</a>
+      <a href="#">Contact</a>
+    </div>
+    <button class="nav-btn">Plan Your Journey</button>
+    <div class="menu-toggle" id="menuToggle">☰</div>
+  </nav> <!-- ================= HERO SECTION ================= -->
   <section class="hero"> <img src="./Images/temple_boat.png" class="hero-bg" alt="Hero Image">
     <div class="overlay"></div>
     <div class="hero-content">
@@ -104,7 +110,7 @@
     <div class="cta-overlay"></div>
     <div class="cta-content">
       <h2> Ready to Explore South India? </h2>
-      <div class="cta-buttons"> <button class="primary-btn"> Start Your Journey </button> <button class="secondary-btn">
+      <div class="cta-buttons"> <button class="primary-btn"  onclick="scrollto"> Start Your Journey </button> <button class="secondary-btn">
           Contact Us </button> </div>
     </div>
   </section> <!-- ================= ENQUIRY FORM ================= -->

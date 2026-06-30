@@ -2,10 +2,19 @@
 
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
+const closeBtn = document.getElementById("closeBtn");
 
-menuToggle.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
-});
+if (menuToggle) {
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.add("active");
+  });
+}
+
+if (closeBtn) {
+  closeBtn.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+  });
+}
 
 // GOOGLE SHEET FORM SUBMIT
 
