@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>About & Contact | Kalaya Travels - South India Experts</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#003527",
+                        "primary-dark": "#064e3b",
+                        "primary-light": "#b0f0d6",
+                        surface: "#f9f9f8",
+                        "surface-alt": "#f4f4f3"
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .scrim-dark {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), rgba(0, 53, 39, 0.7));
+        }
+    </style>
+</head>
+
+<body class="bg-surface text-gray-900 overflow-x-hidden">
+
+    <nav class="w-full px-[6%] py-[22px] flex justify-between items-center sticky top-0 bg-[#f6f2ed] z-50 border-b border-black/5"
+        id="main-nav">
+        <a href="index.html" class="font-serif text-[2.2rem] leading-none text-[#0f5b4f] font-bold">WANDERING SOUTH</a>
+
+        <div class="hidden md:flex gap-[35px] items-center" id="navLinks">
+            <a href="index.html"
+                class="text-[#222] text-[15px] font-medium hover:text-[#0f5b4f] transition-colors">Home</a>
+            <a href="explore.html"
+                class="text-[#222] text-[15px] font-medium hover:text-[#0f5b4f] transition-colors">Explore</a>
+            <a href="package.html"
+                class="text-[#222] text-[15px] font-medium hover:text-[#0f5b4f] transition-colors">Packages</a>
+            <a href="about.html"
+                class="text-[#222] text-[15px] font-medium hover:text-[#0f5b4f] transition-colors">Contact</a>
+        </div>
+
+        <div class="flex items-center gap-4">
+            <div class="userProfile hidden items-center gap-2 cursor-pointer text-[#0f5b4f] font-semibold mr-4">
+                <span class="text-[20px]">👤</span> <span class="userNameDisplay"></span>
+            </div>
+
+            <button
+                class="hidden md:block px-6 py-[14px] rounded-xl bg-[#0f5b4f] text-white font-medium hover:bg-[#0b4239] transition-colors nav-btn">Plan
+                Your Journey</button>
+
+            <div class="md:hidden text-[30px] text-[#0f5b4f] cursor-pointer" id="menuToggle">☰</div>
+        </div>
+
+        <div class="fixed top-0 -right-full w-[280px] h-screen bg-white flex flex-col items-start pt-[80px] pl-[40px] transition-all duration-400 ease-in-out shadow-[-10px_0_30px_rgba(0,0,0,0.08)] z-[2000]"
+            id="mobileNav">
+            <span class="block absolute top-5 right-6 text-[40px] text-[#0f5b4f] cursor-pointer leading-none"
+                id="closeBtn">&times;</span>
+            <a href="index.html" class="mb-[25px] text-[18px] text-[#222] font-medium">Home</a>
+            <a href="explore.html" class="mb-[25px] text-[18px] text-[#222] font-medium">Explore</a>
+            <a href="package.html" class="mb-[25px] text-[18px] text-[#222] font-medium">Packages</a>
+            <a href="about.html" class="mb-[25px] text-[18px] text-[#222] font-medium">Contact</a>
+        </div>
+    </nav>
+
+    <header class="relative h-[60vh] min-h-[400px] w-full flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 bg-cover bg-center"
+            style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLvQt8vWIP1jHg1SlDHd_c5jt_XOCeJndA6O5W9I4ELqKI-EgsQKXA4Ioz2UaGberu8CYwbkQFZvovKoSmdzykv2xesH6GxoqMclV84Xc5npWghyulk0hr0gRnrIyCSWXcJeLvmuL_yZSct-J9dE4XdTK6amkA5J0qFNltkjIuVK4IFe9dv6331xz8970ukz6AWNKY7KB_DAx56FaTVk1kYRcXCn-oHYyZgAxxj85nitBizcZdsIr-MN9Q')">
+        </div>
+        <div class="absolute inset-0 scrim-dark"></div>
+
+        <div class="relative z-10 text-center px-5 max-w-4xl">
+            <h1 class="text-white text-5xl md:text-7xl font-extrabold leading-tight">
+                Our Journey & <br /><span class="text-primary-light">Your Story</span>
+            </h1>
+            <p class="text-white/90 mt-4 text-lg md:text-xl">Excellence in South Indian Hospitality Since 2014</p>
+        </div>
+    </header>
+
+    <section class="py-20 px-5 md:px-16 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div class="space-y-8">
+                <div class="inline-block bg-primary-light text-primary-dark px-4 py-1 rounded-full text-sm font-bold">
+                    ESTABLISHED 2014
+                </div>
+                <h2 class="text-primary text-4xl md:text-5xl font-bold">About Kalaya Travels</h2>
+                <div class="space-y-4 text-gray-700 text-lg leading-relaxed">
+                    <p>At Kalaya Travels, we create meaningful travel experiences across Tamil Nadu and Kerala. With 10+
+                        years of experience, we specialize in helping travelers explore beautiful destinations including
+                        hill stations, beaches, temples, backwaters, and cultural heritage places.</p>
+                    <p>Our goal is to make every journey comfortable, memorable, and perfectly planned. From family
+                        vacations and honeymoon trips to spiritual tours and weekend getaways, we provide personalized
+                        travel experiences designed around your interests and comfort.</p>
+                </div>
+            </div>
+            <div class="relative">
+                <img alt="Scenic Kerala Backwaters" class="w-full h-[450px] object-cover rounded-2xl shadow-xl"
+                    src="https://lh3.googleusercontent.com/aida/AP1WRLvEjHDDtj0B7Cdj6dwhCWzbQ1MfTKR-QEfz3bGlkZa36TQYB7h56J5i1y78zD7kuaYKztniYqYakvr58L0WbpeEmX5rQQ9tdJMSV3mxzRdkTh5HngL_oPFMuOGAdFUGlvZ8euRBURYx7NqNQuEdWS8EfdQ-mPf_y4n3QGKtbHqm61zc7EfB0s3SNakIJWVqqVLos085Iz3fGn3yzVQUTRTDCvDV9aVluhMQ7fFr69mCiOFdAC2Oqdm9zNU" />
+                <div class="absolute -bottom-6 -left-6 hidden md:block glass-card p-6 rounded-xl max-w-xs shadow-lg">
+                    <p class="font-bold text-primary italic">"Bridging the gap between heritage and horizons."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-surface-alt py-20 border-y border-gray-200">
+        <div class="px-5 md:px-16 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 hover:shadow-md transition-shadow group">
+                    <div
+                        class="w-12 h-12 bg-primary-light rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white">history</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-primary mb-2">10+ Years</h3>
+                    <p class="text-gray-600">Trusted travel planning across South India.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 hover:shadow-md transition-shadow group">
+                    <div
+                        class="w-12 h-12 bg-primary-light rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white">mood</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-primary mb-2">5000+</h3>
+                    <p class="text-gray-600">Thousands of memorable journeys created with care.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 hover:shadow-md transition-shadow group">
+                    <div
+                        class="w-12 h-12 bg-primary-light rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white">edit_calendar</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-primary mb-2">Personalized</h3>
+                    <p class="text-gray-600">Travel experiences tailored to your needs.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-gray-200 hover:shadow-md transition-shadow group">
+                    <div
+                        class="w-12 h-12 bg-primary-light rounded-xl flex items-center justify-center mb-4 group-hover:bg-primary transition-colors">
+                        <span class="material-symbols-outlined text-primary group-hover:text-white">support_agent</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-primary mb-2">Friendly</h3>
+                    <p class="text-gray-600">Dedicated assistance throughout your trip.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section class="py-20 px-5 md:px-16 max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+            <div class="space-y-10">
+                <h2 class="text-primary text-4xl md:text-5xl font-bold">Plan Your Trip With Us</h2>
+                <p class="text-gray-700 text-lg max-w-lg">Tell us your dream destination and our team will help you
+                    create the perfect travel experience across Tamil Nadu & Kerala.</p>
+
+                <div class="space-y-6 mt-8">
+                    <div class="flex items-start gap-4 group">
+                        <div class="bg-primary/5 p-4 rounded-2xl group-hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-primary">call</span>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900">Call Us</p>
+                            <p class="text-gray-600">+91 XXXXX XXXXX</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 group">
+                        <div class="bg-primary/5 p-4 rounded-2xl group-hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-primary">mail</span>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900">Email Us</p>
+                            <p class="text-gray-600">hello@kalayatravels.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 group">
+                        <div class="bg-primary/5 p-4 rounded-2xl group-hover:bg-primary/10 transition-colors">
+                            <span class="material-symbols-outlined text-primary">location_on</span>
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900">Office Location</p>
+                            <p class="text-gray-600">Tamil Nadu & Kerala Travel Services</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="glass-card p-6 md:p-10 rounded-3xl shadow-xl">
+                <form class="grid grid-cols-1 md:grid-cols-2 gap-4 enquiry-form">
+                    <div class="col-span-full md:col-span-1">
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Full Name</label>
+                        <input
+                            class="w-full rounded-xl border-gray-300 bg-white px-4 py-3 focus:ring-primary focus:border-primary transition-all"
+                            placeholder="John Doe" type="text" />
+                    </div>
+                    <div class="col-span-full md:col-span-1">
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Phone Number</label>
+                        <input
+                            class="w-full rounded-xl border-gray-300 bg-white px-4 py-3 focus:ring-primary focus:border-primary transition-all"
+                            placeholder="+91 00000 00000" type="tel" />
+                    </div>
+                    <div class="col-span-full">
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Email Address</label>
+                        <input
+                            class="w-full rounded-xl border-gray-300 bg-white px-4 py-3 focus:ring-primary focus:border-primary transition-all"
+                            placeholder="john@example.com" type="email" />
+                    </div>
+                    <div class="col-span-full md:col-span-1">
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Preferred Destination</label>
+                        <select
+                            class="w-full rounded-xl border-gray-300 bg-white px-4 py-3 focus:ring-primary focus:border-primary transition-all">
+                            <option value="">Select destination</option>
+                            <option value="kerala">Kerala Backwaters</option>
+                            <option value="munnar">Munnar Hill Station</option>
+                            <option value="temples">Tamil Nadu Temples</option>
+                            <option value="kanyakumari">Kanyakumari Beach</option>
+                        </select>
+                    </div>
+                    <div class="col-span-full md:col-span-1">
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Travel Date</label>
+                        <input
+                            class="w-full rounded-xl border-gray-300 bg-white px-4 py-3 focus:ring-primary focus:border-primary transition-all"
+                            type="date" />
+                    </div>
+                    <div class="col-span-full">
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Number of Travelers</label>
+                        <input
+                            class="w-full rounded-xl border-gray-300 bg-white px-4 py-3 focus:ring-primary focus:border-primary transition-all"
+                            min="1" placeholder="2" type="number" />
+                    </div>
+                    <div class="col-span-full">
+                        <label class="block text-sm font-bold text-gray-700 mb-1">Message</label>
+                        <textarea
+                            class="w-full rounded-xl border-gray-300 bg-white px-4 py-3 focus:ring-primary focus:border-primary transition-all"
+                            placeholder="I would like to plan a Kerala backwater trip..." rows="4"></textarea>
+                    </div>
+                    <div class="col-span-full pt-2">
+                        <button
+                            class="w-full bg-primary text-white py-4 rounded-xl font-bold hover:bg-primary-dark transition-all shadow-lg active:scale-[0.98]">
+                            Send Enquiry
+                        </button>
+                        <p class="text-center text-xs text-gray-500 mt-4">Our travel experts will contact you shortly.
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#efe9e2] pt-[90px] pb-[30px] px-[6%]">
+        <div class="max-w-[1450px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[50px]">
+            <div>
+                <h2 class="font-serif text-[1.2rem] text-[#0f5b4f] font-bold mb-[20px]">WANDERING SOUTH</h2>
+                <p class="mt-[20px] leading-[1.8] text-[#444]">Cinematic luxury travel experiences across South India.
+                </p>
+            </div>
+            <div>
+                <h4 class="font-serif text-[1.2rem] text-[#0f5b4f] mb-[20px]">Explore</h4>
+                <a href="package.html#hill-stations" class="block text-[#444] mb-[14px] hover:text-[#0f5b4f]">Hill
+                    Stations</a>
+                <a href="package.html#backwaters"
+                    class="block text-[#444] mb-[14px] hover:text-[#0f5b4f]">Backwaters</a>
+                <a href="package.html#temples" class="block text-[#444] mb-[14px] hover:text-[#0f5b4f]">Temples</a>
+            </div>
+            <div>
+                <h4 class="font-serif text-[1.2rem] text-[#0f5b4f] mb-[20px]">Company</h4>
+                <a href="about.html" class="block text-[#444] mb-[14px] hover:text-[#0f5b4f]">About</a>
+                <a href="#" class="block text-[#444] mb-[14px] hover:text-[#0f5b4f]">Privacy</a>
+                <a href="about.html" class="block text-[#444] mb-[14px] hover:text-[#0f5b4f]">Contact</a>
+            </div>
+        </div>
+        <div class="text-center mt-[60px] pt-[25px] border-t border-black/10 text-[#666]">
+            &copy; 2026 Wandering South Tourism
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
