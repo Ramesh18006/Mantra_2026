@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Kalaya - Travel Packages</title>
-    
+
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
     <script>
         tailwind.config = {
             theme: {
@@ -28,11 +31,24 @@
     </script>
 
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .glass-panel { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.4); }
-        .shadow-ambient { box-shadow: 0 20px 40px -10px rgba(0, 53, 39, 0.08); }
-        .scrim { background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 100%); }
-        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .shadow-ambient {
+            box-shadow: 0 20px 40px -10px rgba(0, 53, 39, 0.08);
+        }
+
+        .scrim {
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 100%);
+        }
+
         .card-popup {
             position: absolute;
             top: 50%;
@@ -51,31 +67,66 @@
             border-radius: 1.5rem;
             box-shadow: 0 25px 50px -12px rgba(0, 53, 39, 0.25);
         }
-        
+
         @media (min-width: 768px) {
             .package-card:hover .card-popup {
-                opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); pointer-events: auto;
+                opacity: 1;
+                visibility: visible;
+                transform: translate(-50%, -50%) scale(1);
+                pointer-events: auto;
             }
-            .package-card:hover .view-trigger-btn { opacity: 0; }
+
+            .package-card:hover .view-trigger-btn {
+                opacity: 0;
+            }
         }
 
         .mobile-modal-active .card-popup {
-            opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); pointer-events: auto; position: fixed; top: 50%; left: 50%;
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+            pointer-events: auto;
+            position: fixed;
+            top: 50%;
+            left: 50%;
         }
 
         .badge-premium {
-            background: linear-gradient(135deg, #003527 0%, #064e3b 100%); color: #b0f0d6; box-shadow: 0 4px 12px rgba(0, 53, 39, 0.2);
+            background: linear-gradient(135deg, #003527 0%, #064e3b 100%);
+            color: #b0f0d6;
+            box-shadow: 0 4px 12px rgba(0, 53, 39, 0.2);
         }
 
         .overlay-scrim {
-            position: fixed; inset: 0; background: rgba(0, 53, 39, 0.4); backdrop-filter: blur(4px); z-index: 55; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 53, 39, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 55;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
         }
 
-        .mobile-modal-active .overlay-scrim { opacity: 1; pointer-events: auto; }
+        .mobile-modal-active .overlay-scrim {
+            opacity: 1;
+            pointer-events: auto;
+        }
 
         @media (max-width: 767px) {
-            .card-popup { bottom: 20px; top: auto; transform: translate(-50%, 20px) scale(0.95); max-width: none; width: calc(100% - 40px); }
-            .mobile-modal-active .card-popup { transform: translate(-50%, 0) scale(1); top: auto; bottom: 20px; }
+            .card-popup {
+                bottom: 20px;
+                top: auto;
+                transform: translate(-50%, 20px) scale(0.95);
+                max-width: none;
+                width: calc(100% - 40px);
+            }
+
+            .mobile-modal-active .card-popup {
+                transform: translate(-50%, 0) scale(1);
+                top: auto;
+                bottom: 20px;
+            }
         }
     </style>
 </head>
@@ -85,17 +136,23 @@
 
     <nav class="bg-white/70 backdrop-blur-md fixed top-0 w-full z-50 border-b border-white/40 shadow-sm">
         <div class="flex justify-between items-center px-5 md:px-16 py-4 max-w-7xl mx-auto">
-            <a class="text-3xl font-bold tracking-tighter text-primary hover:opacity-80 transition-opacity" href="#">KALAYA</a>
-            
+            <a class="text-3xl font-bold tracking-tighter text-primary hover:opacity-80 transition-opacity"
+                href="#">WANDERING <br>SOUTH</a>
+
             <div class="hidden md:flex gap-8 items-center">
-                <a class="text-sm font-bold tracking-wide text-text-muted hover:text-primary transition-colors duration-300" href="#">Destinations</a>
-                <a class="text-sm font-bold tracking-wide text-primary border-b-2 border-primary pb-1" href="#">Tours</a>
-                <a class="text-sm font-bold tracking-wide text-text-muted hover:text-primary transition-colors duration-300" href="#">Experiences</a>
-                <a class="text-sm font-bold tracking-wide text-text-muted hover:text-primary transition-colors duration-300" href="#">About</a>
+                <a class="text-sm font-bold tracking-wide text-text-muted hover:text-primary transition-colors duration-300"
+                    href="#">Destinations</a>
+                <a class="text-sm font-bold tracking-wide text-primary border-b-2 border-primary pb-1"
+                    href="#">Tours</a>
+                <a class="text-sm font-bold tracking-wide text-text-muted hover:text-primary transition-colors duration-300"
+                    href="#">Experiences</a>
+                <a class="text-sm font-bold tracking-wide text-text-muted hover:text-primary transition-colors duration-300"
+                    href="#">About</a>
             </div>
-            
+
             <div class="flex items-center gap-4">
-                <button class="hidden md:block bg-primary text-white px-6 py-2 rounded-full text-sm font-bold tracking-wide scale-95 active:opacity-80 transition-transform hover:bg-primary-dark">
+                <button
+                    class="hidden md:block bg-primary text-white px-6 py-2 rounded-full text-sm font-bold tracking-wide scale-95 active:opacity-80 transition-transform hover:bg-primary-dark">
                     Book Now
                 </button>
                 <button class="md:hidden text-primary">
@@ -107,10 +164,12 @@
 
     <header class="relative pt-[120px] pb-20 min-h-[70vh] flex items-center justify-center">
         <div class="absolute inset-0 w-full h-full z-0 overflow-hidden">
-            <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-100" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD7CHcCNEPIN1IjOosI7Ks70UOdsgxAALBHbLaEZmIc0RXaVHiliaiumKlYPnCz3c6bx0MK3o-YyJmltidcaBpd19CxQbQhmCmY7pFfBsQiqL603G0i4tZVzZEwXndKbWvWWuxGTi4f9nq6MnFszK4YXQVHTqBAuCJfC9w-nnvdGkzkJh9PgYGsbYb9f-dx6iZwbSZKBXAR95BGmDAYF6-q3l4yfz77WRVtVKkOl1B1aF7jTXu3zQORjSIY4sEwT_Gprv0CxAE9nHM')"></div>
+            <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-100"
+                style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD7CHcCNEPIN1IjOosI7Ks70UOdsgxAALBHbLaEZmIc0RXaVHiliaiumKlYPnCz3c6bx0MK3o-YyJmltidcaBpd19CxQbQhmCmY7pFfBsQiqL603G0i4tZVzZEwXndKbWvWWuxGTi4f9nq6MnFszK4YXQVHTqBAuCJfC9w-nnvdGkzkJh9PgYGsbYb9f-dx6iZwbSZKBXAR95BGmDAYF6-q3l4yfz77WRVtVKkOl1B1aF7jTXu3zQORjSIY4sEwT_Gprv0CxAE9nHM')">
+            </div>
             <div class="absolute inset-0 bg-primary/30"></div>
         </div>
-        
+
         <div class="relative z-10 max-w-7xl mx-auto px-5 md:px-16 text-center flex flex-col items-center">
             <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-4 max-w-4xl drop-shadow-lg">
                 Discover Handpicked South India Travel Packages
@@ -118,13 +177,17 @@
             <p class="text-lg text-white/90 max-w-2xl mb-8 drop-shadow-md">
                 From misty hill stations and peaceful backwaters to ancient temples and golden beaches...
             </p>
-            
+
             <div class="w-full max-w-3xl glass-panel rounded-full p-2 flex items-center shadow-ambient">
                 <div class="flex-grow flex items-center px-4">
                     <span class="material-symbols-outlined text-primary mr-2">search</span>
-                    <input class="w-full bg-transparent border-none focus:ring-0 text-base text-primary placeholder-primary/60" placeholder="Search your perfect journey by experience, destination, or travel style..." type="text"/>
+                    <input
+                        class="w-full bg-transparent border-none focus:ring-0 text-base text-primary placeholder-primary/60"
+                        placeholder="Search your perfect journey by experience, destination, or travel style..."
+                        type="text" />
                 </div>
-                <button class="bg-primary text-white rounded-full px-6 py-3 text-sm font-bold tracking-wide hover:bg-primary-dark transition-colors">
+                <button
+                    class="bg-primary text-white rounded-full px-6 py-3 text-sm font-bold tracking-wide hover:bg-primary-dark transition-colors">
                     Explore
                 </button>
             </div>
@@ -132,20 +195,25 @@
     </header>
 
     <main class="py-20">
-        
+
         <section class="max-w-7xl mx-auto px-5 md:px-16 mb-20">
             <div class="mb-8 text-center md:text-left">
                 <h2 class="text-4xl md:text-5xl font-bold text-primary mb-2">Escape Into The Mountains</h2>
                 <p class="text-lg text-text-muted">Cool weather, tea plantations, waterfalls...</p>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                
-                <div class="package-card relative bg-surface rounded-xl overflow-hidden shadow-ambient group flex flex-col cursor-pointer">
+
+                <div
+                    class="package-card relative bg-surface rounded-xl overflow-hidden shadow-ambient group flex flex-col cursor-pointer">
                     <div class="relative h-64 overflow-hidden">
-                        <span class="absolute top-4 left-4 z-20 badge-premium px-3 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider">Bestseller</span>
-                        <img alt="Munnar" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AP1WRLs7dTE3u7f-1d0VGOOC3nB_DbNoYGjLjfkoSiIqYypumnDoJ-zd58B3FIIw1WbIetNTE5l5H1LNVOkonmo6d22sess8aW_xU9VtzjlOszGphF0XXdiUYrqT_1XhTGRN2p2WFJmq6uySQ5gvi400MU7P98AmlQQdfvSnfPhogGXeNh8oTDU-yuIrMdZuRd_K1sjrVB2Y6cCnqYz5qpE0PoXebC62zwUE3ljoylSx9ahhd7Dr3gXaVtwJLjM"/>
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold tracking-wide text-primary flex items-center gap-1">
+                        <span
+                            class="absolute top-4 left-4 z-20 badge-premium px-3 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider">Bestseller</span>
+                        <img alt="Munnar"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src="https://lh3.googleusercontent.com/aida/AP1WRLs7dTE3u7f-1d0VGOOC3nB_DbNoYGjLjfkoSiIqYypumnDoJ-zd58B3FIIw1WbIetNTE5l5H1LNVOkonmo6d22sess8aW_xU9VtzjlOszGphF0XXdiUYrqT_1XhTGRN2p2WFJmq6uySQ5gvi400MU7P98AmlQQdfvSnfPhogGXeNh8oTDU-yuIrMdZuRd_K1sjrVB2Y6cCnqYz5qpE0PoXebC62zwUE3ljoylSx9ahhd7Dr3gXaVtwJLjM" />
+                        <div
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold tracking-wide text-primary flex items-center gap-1">
                             <span class="material-symbols-outlined text-[16px]">schedule</span> 4D/3N
                         </div>
                     </div>
@@ -153,41 +221,65 @@
                         <div>
                             <h3 class="text-3xl font-bold text-primary mb-2">Munnar & Wayanad Nature Escape</h3>
                             <ul class="text-base text-text-muted space-y-1">
-                                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> Private Tea Estate Villa</li>
+                                <li class="flex items-center gap-2"><span
+                                        class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+                                    Private Tea Estate Villa</li>
                             </ul>
                         </div>
-                        <button class="view-trigger-btn w-full mt-4 bg-surface-variant text-primary text-sm font-bold tracking-wide py-3 rounded-lg transition-opacity">View Package</button>
+                        <button
+                            class="view-trigger-btn w-full mt-4 bg-surface-variant text-primary text-sm font-bold tracking-wide py-3 rounded-lg transition-opacity">View
+                            Package</button>
                     </div>
-                    
+
                     <div class="card-popup p-5 overflow-hidden text-left">
                         <div class="flex items-start gap-4 mb-4">
                             <div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                                <img alt="Munnar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLs7dTE3u7f-1d0VGOOC3nB_DbNoYGjLjfkoSiIqYypumnDoJ-zd58B3FIIw1WbIetNTE5l5H1LNVOkonmo6d22sess8aW_xU9VtzjlOszGphF0XXdiUYrqT_1XhTGRN2p2WFJmq6uySQ5gvi400MU7P98AmlQQdfvSnfPhogGXeNh8oTDU-yuIrMdZuRd_K1sjrVB2Y6cCnqYz5qpE0PoXebC62zwUE3ljoylSx9ahhd7Dr3gXaVtwJLjM"/>
+                                <img alt="Munnar" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida/AP1WRLs7dTE3u7f-1d0VGOOC3nB_DbNoYGjLjfkoSiIqYypumnDoJ-zd58B3FIIw1WbIetNTE5l5H1LNVOkonmo6d22sess8aW_xU9VtzjlOszGphF0XXdiUYrqT_1XhTGRN2p2WFJmq6uySQ5gvi400MU7P98AmlQQdfvSnfPhogGXeNh8oTDU-yuIrMdZuRd_K1sjrVB2Y6cCnqYz5qpE0PoXebC62zwUE3ljoylSx9ahhd7Dr3gXaVtwJLjM" />
                             </div>
                             <div>
                                 <div class="flex items-center gap-1 text-primary font-bold text-[12px] mb-1">
-                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 4 Days / 3 Nights
+                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 4 Days / 3
+                                    Nights
                                 </div>
                                 <div class="text-primary text-base font-bold">Starting From</div>
-                                <div class="text-primary text-3xl font-bold">₹14,999 <span class="text-[12px] font-normal text-text-muted">/ Person</span></div>
+                                <div class="text-primary text-3xl font-bold">₹14,999 <span
+                                        class="text-[12px] font-normal text-text-muted">/ Person</span></div>
                             </div>
                         </div>
                         <div class="space-y-2 mb-4">
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Organic Tea Tasting</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Waterfall Treks</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">check</span> Private Villa Stay</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">check</span> Daily Breakfast</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Organic
+                                Tea Tasting</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Waterfall
+                                Treks</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">check</span> Private
+                                Villa Stay</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">check</span> Daily
+                                Breakfast</div>
                         </div>
-                        <button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book This Trip</button>
-                        <button class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
+                        <button
+                            class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book
+                            This Trip</button>
+                        <button
+                            class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
                     </div>
                 </div>
 
-                <div class="package-card relative bg-surface rounded-xl overflow-hidden shadow-ambient group flex flex-col cursor-pointer">
+                <div
+                    class="package-card relative bg-surface rounded-xl overflow-hidden shadow-ambient group flex flex-col cursor-pointer">
                     <div class="relative h-64 overflow-hidden">
-                        <span class="absolute top-4 left-4 z-20 badge-premium px-3 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider">Most Popular</span>
-                        <img alt="Ooty" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AP1WRLvEjHDDtj0B7Cdj6dwhCWzbQ1MfTKR-QEfz3bGlkZa36TQYB7h56J5i1y78zD7kuaYKztniYqYakvr58L0WbpeEmX5rQQ9tdJMSV3mxzRdkTh5HngL_oPFMuOGAdFUGlvZ8euRBURYx7NqNQuEdWS8EfdQ-mPf_y4n3QGKtbHqm61zc7EfB0s3SNakIJWVqqVLos085Iz3fGn3yzVQUTRTDCvDV9aVluhMQ7fFr69mCiOFdAC2Oqdm9zNU"/>
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold tracking-wide text-primary flex items-center gap-1">
+                        <span
+                            class="absolute top-4 left-4 z-20 badge-premium px-3 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider">Most
+                            Popular</span>
+                        <img alt="Ooty"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src="https://lh3.googleusercontent.com/aida/AP1WRLvEjHDDtj0B7Cdj6dwhCWzbQ1MfTKR-QEfz3bGlkZa36TQYB7h56J5i1y78zD7kuaYKztniYqYakvr58L0WbpeEmX5rQQ9tdJMSV3mxzRdkTh5HngL_oPFMuOGAdFUGlvZ8euRBURYx7NqNQuEdWS8EfdQ-mPf_y4n3QGKtbHqm61zc7EfB0s3SNakIJWVqqVLos085Iz3fGn3yzVQUTRTDCvDV9aVluhMQ7fFr69mCiOFdAC2Oqdm9zNU" />
+                        <div
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold tracking-wide text-primary flex items-center gap-1">
                             <span class="material-symbols-outlined text-[16px]">schedule</span> 3D/2N
                         </div>
                     </div>
@@ -195,40 +287,62 @@
                         <div>
                             <h3 class="text-3xl font-bold text-primary mb-2">Ooty & Coonoor Scenic Retreat</h3>
                             <ul class="text-base text-text-muted space-y-1">
-                                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> Heritage Train Ride</li>
+                                <li class="flex items-center gap-2"><span
+                                        class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+                                    Heritage Train Ride</li>
                             </ul>
                         </div>
-                        <button class="view-trigger-btn w-full mt-4 bg-surface-variant text-primary text-sm font-bold tracking-wide py-3 rounded-lg transition-opacity">View Package</button>
+                        <button
+                            class="view-trigger-btn w-full mt-4 bg-surface-variant text-primary text-sm font-bold tracking-wide py-3 rounded-lg transition-opacity">View
+                            Package</button>
                     </div>
-                    
+
                     <div class="card-popup p-5 overflow-hidden text-left">
                         <div class="flex items-start gap-4 mb-4">
                             <div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                                <img alt="Ooty" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvEjHDDtj0B7Cdj6dwhCWzbQ1MfTKR-QEfz3bGlkZa36TQYB7h56J5i1y78zD7kuaYKztniYqYakvr58L0WbpeEmX5rQQ9tdJMSV3mxzRdkTh5HngL_oPFMuOGAdFUGlvZ8euRBURYx7NqNQuEdWS8EfdQ-mPf_y4n3QGKtbHqm61zc7EfB0s3SNakIJWVqqVLos085Iz3fGn3yzVQUTRTDCvDV9aVluhMQ7fFr69mCiOFdAC2Oqdm9zNU"/>
+                                <img alt="Ooty" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida/AP1WRLvEjHDDtj0B7Cdj6dwhCWzbQ1MfTKR-QEfz3bGlkZa36TQYB7h56J5i1y78zD7kuaYKztniYqYakvr58L0WbpeEmX5rQQ9tdJMSV3mxzRdkTh5HngL_oPFMuOGAdFUGlvZ8euRBURYx7NqNQuEdWS8EfdQ-mPf_y4n3QGKtbHqm61zc7EfB0s3SNakIJWVqqVLos085Iz3fGn3yzVQUTRTDCvDV9aVluhMQ7fFr69mCiOFdAC2Oqdm9zNU" />
                             </div>
                             <div>
                                 <div class="flex items-center gap-1 text-primary font-bold text-[12px] mb-1">
-                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 3 Days / 2 Nights
+                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 3 Days / 2
+                                    Nights
                                 </div>
                                 <div class="text-primary text-base font-bold">Starting From</div>
-                                <div class="text-primary text-3xl font-bold">₹11,499 <span class="text-[12px] font-normal text-text-muted">/ Person</span></div>
+                                <div class="text-primary text-3xl font-bold">₹11,499 <span
+                                        class="text-[12px] font-normal text-text-muted">/ Person</span></div>
                             </div>
                         </div>
                         <div class="space-y-2 mb-4">
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Nilgiri Toy Train Ticket</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Heritage Bungalow Stay</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">check</span> Rose Garden Visit</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Nilgiri
+                                Toy Train Ticket</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Heritage
+                                Bungalow Stay</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">check</span> Rose Garden
+                                Visit</div>
                         </div>
-                        <button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book This Trip</button>
-                        <button class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
+                        <button
+                            class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book
+                            This Trip</button>
+                        <button
+                            class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
                     </div>
                 </div>
 
-                <div class="package-card relative bg-surface rounded-xl overflow-hidden shadow-ambient group flex flex-col cursor-pointer">
+                <div
+                    class="package-card relative bg-surface rounded-xl overflow-hidden shadow-ambient group flex flex-col cursor-pointer">
                     <div class="relative h-64 overflow-hidden">
-                        <span class="absolute top-4 left-4 z-20 badge-premium px-3 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider">Weekend Escape</span>
-                        <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuALzalG90l_bF4rHf983LIa-BrHPwW_QYyAwwXePUKKtgEdlucbQqYil2lmDFjYei7W4nHSFepgAPDbozNtMJJy-8K15TBwjkGM4Ov22AYrvSP3NoIzFno0lFfQsQNP2jweqJixB0UA2iQuf0hDP73SGelcEXiADJRge2keTCYXBeMx1PpRSfpvWzAkI5wsCVcqtR5sQdLZ22IPOvIje266JU_8JryIfJTdMve0f1By8cRynHvR3SUISEJ3f2B2y3OptvHXQ6ln7do')"></div>
-                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold tracking-wide text-primary flex items-center gap-1">
+                        <span
+                            class="absolute top-4 left-4 z-20 badge-premium px-3 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider">Weekend
+                            Escape</span>
+                        <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuALzalG90l_bF4rHf983LIa-BrHPwW_QYyAwwXePUKKtgEdlucbQqYil2lmDFjYei7W4nHSFepgAPDbozNtMJJy-8K15TBwjkGM4Ov22AYrvSP3NoIzFno0lFfQsQNP2jweqJixB0UA2iQuf0hDP73SGelcEXiADJRge2keTCYXBeMx1PpRSfpvWzAkI5wsCVcqtR5sQdLZ22IPOvIje266JU_8JryIfJTdMve0f1By8cRynHvR3SUISEJ3f2B2y3OptvHXQ6ln7do')">
+                        </div>
+                        <div
+                            class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-bold tracking-wide text-primary flex items-center gap-1">
                             <span class="material-symbols-outlined text-[16px]">schedule</span> 3D/2N
                         </div>
                     </div>
@@ -236,32 +350,49 @@
                         <div>
                             <h3 class="text-3xl font-bold text-primary mb-2">Kodaikanal Relaxation Tour</h3>
                             <ul class="text-base text-text-muted space-y-1">
-                                <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[18px]">check_circle</span> Luxury Lakeside Stay</li>
+                                <li class="flex items-center gap-2"><span
+                                        class="material-symbols-outlined text-primary text-[18px]">check_circle</span>
+                                    Luxury Lakeside Stay</li>
                             </ul>
                         </div>
-                        <button class="view-trigger-btn w-full mt-4 bg-surface-variant text-primary text-sm font-bold tracking-wide py-3 rounded-lg transition-opacity">View Package</button>
+                        <button
+                            class="view-trigger-btn w-full mt-4 bg-surface-variant text-primary text-sm font-bold tracking-wide py-3 rounded-lg transition-opacity">View
+                            Package</button>
                     </div>
-                    
+
                     <div class="card-popup p-5 overflow-hidden text-left">
                         <div class="flex items-start gap-4 mb-4">
                             <div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                                <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuALzalG90l_bF4rHf983LIa-BrHPwW_QYyAwwXePUKKtgEdlucbQqYil2lmDFjYei7W4nHSFepgAPDbozNtMJJy-8K15TBwjkGM4Ov22AYrvSP3NoIzFno0lFfQsQNP2jweqJixB0UA2iQuf0hDP73SGelcEXiADJRge2keTCYXBeMx1PpRSfpvWzAkI5wsCVcqtR5sQdLZ22IPOvIje266JU_8JryIfJTdMve0f1By8cRynHvR3SUISEJ3f2B2y3OptvHXQ6ln7do')"></div>
+                                <div class="w-full h-full bg-cover bg-center"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuALzalG90l_bF4rHf983LIa-BrHPwW_QYyAwwXePUKKtgEdlucbQqYil2lmDFjYei7W4nHSFepgAPDbozNtMJJy-8K15TBwjkGM4Ov22AYrvSP3NoIzFno0lFfQsQNP2jweqJixB0UA2iQuf0hDP73SGelcEXiADJRge2keTCYXBeMx1PpRSfpvWzAkI5wsCVcqtR5sQdLZ22IPOvIje266JU_8JryIfJTdMve0f1By8cRynHvR3SUISEJ3f2B2y3OptvHXQ6ln7do')">
+                                </div>
                             </div>
                             <div>
                                 <div class="flex items-center gap-1 text-primary font-bold text-[12px] mb-1">
-                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 3 Days / 2 Nights
+                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 3 Days / 2
+                                    Nights
                                 </div>
                                 <div class="text-primary text-base font-bold">Starting From</div>
-                                <div class="text-primary text-3xl font-bold">₹10,999 <span class="text-[12px] font-normal text-text-muted">/ Person</span></div>
+                                <div class="text-primary text-3xl font-bold">₹10,999 <span
+                                        class="text-[12px] font-normal text-text-muted">/ Person</span></div>
                             </div>
                         </div>
                         <div class="space-y-2 mb-4">
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Lakeside Breakfast</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Pine Forest Trek</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">check</span> Private Cab Transfer</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Lakeside
+                                Breakfast</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Pine
+                                Forest Trek</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">check</span> Private Cab
+                                Transfer</div>
                         </div>
-                        <button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book This Trip</button>
-                        <button class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
+                        <button
+                            class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book
+                            This Trip</button>
+                        <button
+                            class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
                     </div>
                 </div>
 
@@ -270,114 +401,171 @@
 
         <section class="max-w-7xl mx-auto px-5 md:px-16 mb-20">
             <div class="mb-8 text-center md:text-left flex items-center justify-center md:justify-start gap-4">
-                <span class="material-symbols-outlined text-tertiary text-4xl" style="font-variation-settings: 'FILL' 1;">temple_hindu</span>
+                <span class="material-symbols-outlined text-tertiary text-4xl"
+                    style="font-variation-settings: 'FILL' 1;">temple_hindu</span>
                 <h2 class="text-4xl md:text-5xl font-bold text-primary">Experience South India’s Spiritual Heritage</h2>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-                <div class="package-card md:col-span-8 bg-surface rounded-xl overflow-hidden shadow-ambient group relative min-h-[400px] flex items-end cursor-pointer">
-                    <img alt="Madurai" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AP1WRLv754kh0-osSfoJHaFCFx02PjzYxuZgrd78uxKha2F3LlFtlsYLLPyc9z--pF-0KGBKR8m5p00Qesvnol3EUvRn3Oe1-GWJ-xJUGy8st19Hx7PtvBf1-6THO4gwo7vKPd_TOlGUXR3Rb0D9aNOBufvJaXLiBzI7AkIvB373JL34YTUASSvoHh4b0Xn1R1r1x1fJvW_lSoffoqsREcN0oraA-ENjKFdnxgRorxWsIprw3rDlbbErTeJNkI4"/>
+                <div
+                    class="package-card md:col-span-8 bg-surface rounded-xl overflow-hidden shadow-ambient group relative min-h-[400px] flex items-end cursor-pointer">
+                    <img alt="Madurai"
+                        class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        src="https://lh3.googleusercontent.com/aida/AP1WRLv754kh0-osSfoJHaFCFx02PjzYxuZgrd78uxKha2F3LlFtlsYLLPyc9z--pF-0KGBKR8m5p00Qesvnol3EUvRn3Oe1-GWJ-xJUGy8st19Hx7PtvBf1-6THO4gwo7vKPd_TOlGUXR3Rb0D9aNOBufvJaXLiBzI7AkIvB373JL34YTUASSvoHh4b0Xn1R1r1x1fJvW_lSoffoqsREcN0oraA-ENjKFdnxgRorxWsIprw3rDlbbErTeJNkI4" />
                     <div class="absolute inset-0 scrim"></div>
                     <div class="relative z-10 p-8 w-full flex justify-between items-end">
                         <div>
-                            <span class="inline-block bg-[#743000] text-[#ff975e] px-3 py-1 rounded-full font-bold text-[12px] mb-3">Spiritual Center</span>
-                            <h3 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-2">Madurai Spiritual Journey</h3>
-                            <p class="text-base text-white/80 mb-4 flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">schedule</span> 2 Days / 1 Night</p>
+                            <span
+                                class="inline-block bg-[#743000] text-[#ff975e] px-3 py-1 rounded-full font-bold text-[12px] mb-3">Spiritual
+                                Center</span>
+                            <h3 class="text-4xl md:text-6xl font-extrabold tracking-tight text-white mb-2">Madurai
+                                Spiritual Journey</h3>
+                            <p class="text-base text-white/80 mb-4 flex items-center gap-2"><span
+                                    class="material-symbols-outlined text-[18px]">schedule</span> 2 Days / 1 Night</p>
                         </div>
-                        <button class="view-trigger-btn glass-panel text-white text-sm font-bold tracking-wide px-6 py-3 rounded-full transition-colors flex items-center gap-2">
+                        <button
+                            class="view-trigger-btn glass-panel text-white text-sm font-bold tracking-wide px-6 py-3 rounded-full transition-colors flex items-center gap-2">
                             View Package <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
                         </button>
                     </div>
-                    
+
                     <div class="card-popup p-5 overflow-hidden text-left">
                         <div class="flex items-start gap-4 mb-4">
                             <div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 border border-white/50">
-                                <img alt="Madurai" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLv754kh0-osSfoJHaFCFx02PjzYxuZgrd78uxKha2F3LlFtlsYLLPyc9z--pF-0KGBKR8m5p00Qesvnol3EUvRn3Oe1-GWJ-xJUGy8st19Hx7PtvBf1-6THO4gwo7vKPd_TOlGUXR3Rb0D9aNOBufvJaXLiBzI7AkIvB373JL34YTUASSvoHh4b0Xn1R1r1x1fJvW_lSoffoqsREcN0oraA-ENjKFdnxgRorxWsIprw3rDlbbErTeJNkI4"/>
+                                <img alt="Madurai" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida/AP1WRLv754kh0-osSfoJHaFCFx02PjzYxuZgrd78uxKha2F3LlFtlsYLLPyc9z--pF-0KGBKR8m5p00Qesvnol3EUvRn3Oe1-GWJ-xJUGy8st19Hx7PtvBf1-6THO4gwo7vKPd_TOlGUXR3Rb0D9aNOBufvJaXLiBzI7AkIvB373JL34YTUASSvoHh4b0Xn1R1r1x1fJvW_lSoffoqsREcN0oraA-ENjKFdnxgRorxWsIprw3rDlbbErTeJNkI4" />
                             </div>
                             <div>
                                 <div class="flex items-center gap-1 text-primary font-bold text-[12px] mb-1">
-                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 2 Days / 1 Night
+                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 2 Days / 1
+                                    Night
                                 </div>
                                 <div class="text-primary text-base font-bold">Starting From</div>
-                                <div class="text-primary text-3xl font-bold">₹7,499 <span class="text-[12px] font-normal text-text-muted">/ Person</span></div>
+                                <div class="text-primary text-3xl font-bold">₹7,499 <span
+                                        class="text-[12px] font-normal text-text-muted">/ Person</span></div>
                             </div>
                         </div>
                         <div class="space-y-2 mb-4">
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Meenakshi Temple VIP Entry</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Local Guide for History</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">check</span> Traditional Madurai Feast</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Meenakshi
+                                Temple VIP Entry</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Local
+                                Guide for History</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">check</span> Traditional
+                                Madurai Feast</div>
                         </div>
-                        <button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book This Trip</button>
-                        <button class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
+                        <button
+                            class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book
+                            This Trip</button>
+                        <button
+                            class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
                     </div>
                 </div>
 
                 <div class="md:col-span-4 flex flex-col gap-6">
-                    <div class="package-card flex-1 bg-surface rounded-xl p-6 shadow-ambient hover:shadow-lg transition-shadow flex flex-col justify-between group relative cursor-pointer">
-                        <span class="absolute top-4 left-4 z-20 badge-premium px-3 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider">Honeymoon Special</span>
+                    <div
+                        class="package-card flex-1 bg-surface rounded-xl p-6 shadow-ambient hover:shadow-lg transition-shadow flex flex-col justify-between group relative cursor-pointer">
+                        <span
+                            class="absolute top-4 left-4 z-20 badge-premium px-3 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider">Honeymoon
+                            Special</span>
                         <div>
                             <div class="flex justify-between items-start mb-4">
                                 <h3 class="text-3xl font-bold text-primary mt-6">Rameswaram Sacred Tour</h3>
-                                <span class="bg-surface-variant text-primary px-2 py-1 rounded-md font-bold text-[12px] mt-6">3D/2N</span>
+                                <span
+                                    class="bg-surface-variant text-primary px-2 py-1 rounded-md font-bold text-[12px] mt-6">3D/2N</span>
                             </div>
-                            <p class="text-base text-text-muted line-clamp-2">Discover the sacred island, its historic temples...</p>
+                            <p class="text-base text-text-muted line-clamp-2">Discover the sacred island, its historic
+                                temples...</p>
                         </div>
-                        <button class="view-trigger-btn mt-4 text-primary text-sm font-bold tracking-wide flex items-center gap-1">Explore <span class="material-symbols-outlined text-[18px]">chevron_right</span></button>
-                        
+                        <button
+                            class="view-trigger-btn mt-4 text-primary text-sm font-bold tracking-wide flex items-center gap-1">Explore
+                            <span class="material-symbols-outlined text-[18px]">chevron_right</span></button>
+
                         <div class="card-popup p-5 overflow-hidden text-left">
                             <div class="flex items-start gap-4 mb-4">
-                                <div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-primary-dark flex items-center justify-center">
+                                <div
+                                    class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-primary-dark flex items-center justify-center">
                                     <span class="material-symbols-outlined text-white text-2xl">temple_hindu</span>
                                 </div>
                                 <div>
                                     <div class="flex items-center gap-1 text-primary font-bold text-[12px] mb-1">
-                                        <span class="material-symbols-outlined text-[14px]">calendar_today</span> 3 Days / 2 Nights
+                                        <span class="material-symbols-outlined text-[14px]">calendar_today</span> 3 Days
+                                        / 2 Nights
                                     </div>
                                     <div class="text-primary text-base font-bold">Starting From</div>
-                                    <div class="text-primary text-3xl font-bold">₹9,499 <span class="text-[12px] font-normal text-text-muted">/ Person</span></div>
+                                    <div class="text-primary text-3xl font-bold">₹9,499 <span
+                                            class="text-[12px] font-normal text-text-muted">/ Person</span></div>
                                 </div>
                             </div>
                             <div class="space-y-2 mb-4">
-                                <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Pamban Bridge Drive</div>
-                                <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Temple Ritual Pass</div>
-                                <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">check</span> Beachfront Resort Stay</div>
+                                <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                        class="material-symbols-outlined text-primary text-[16px]">verified</span>
+                                    Pamban Bridge Drive</div>
+                                <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                        class="material-symbols-outlined text-primary text-[16px]">verified</span>
+                                    Temple Ritual Pass</div>
+                                <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                        class="material-symbols-outlined text-primary text-[16px]">check</span>
+                                    Beachfront Resort Stay</div>
                             </div>
-                            <button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book This Trip</button>
-                            <button class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
+                            <button
+                                class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book
+                                This Trip</button>
+                            <button
+                                class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
                         </div>
                     </div>
 
-                    <div class="package-card flex-1 bg-surface rounded-xl overflow-hidden shadow-ambient relative group cursor-pointer">
-                        <img alt="Thanjavur" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AP1WRLvv7fZVOsiU9VUUYH6-sy5nRmG71u1yoAbZXYnm_QGahvxmJtnGxSIuGg65nn9ZpKFy483rmLx1q2fIL-7tIT8zrGjPsoR-7x1kPsCOitfKjyOQHLHEgCRXjL8-1jzqaFN3ttj-pdGM13zE8YCsT9IYnMZvDv00g7jV6SFqBcl14oSjBq7Chy9E2hqfiBtnHuDA9iPLuGoor2ZrO53X4_-M5EEIDePkMrr9rdunxnGCplwEAhjzO-Rxe68"/>
+                    <div
+                        class="package-card flex-1 bg-surface rounded-xl overflow-hidden shadow-ambient relative group cursor-pointer">
+                        <img alt="Thanjavur"
+                            class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
+                            src="https://lh3.googleusercontent.com/aida/AP1WRLvv7fZVOsiU9VUUYH6-sy5nRmG71u1yoAbZXYnm_QGahvxmJtnGxSIuGg65nn9ZpKFy483rmLx1q2fIL-7tIT8zrGjPsoR-7x1kPsCOitfKjyOQHLHEgCRXjL8-1jzqaFN3ttj-pdGM13zE8YCsT9IYnMZvDv00g7jV6SFqBcl14oSjBq7Chy9E2hqfiBtnHuDA9iPLuGoor2ZrO53X4_-M5EEIDePkMrr9rdunxnGCplwEAhjzO-Rxe68" />
                         <div class="absolute inset-0 bg-primary/40 group-hover:bg-primary/20 transition-colors"></div>
                         <div class="relative z-10 p-6 h-full flex flex-col justify-between">
                             <div>
                                 <h3 class="text-3xl font-bold text-white mb-1">Thanjavur Heritage Trail</h3>
                                 <p class="text-base text-white/90">2 Days / 1 Night</p>
                             </div>
-                            <button class="view-trigger-btn w-fit bg-white/20 backdrop-blur-md text-white text-sm font-bold tracking-wide px-4 py-2 rounded-lg hover:bg-white hover:text-primary transition-colors">View Details</button>
+                            <button
+                                class="view-trigger-btn w-fit bg-white/20 backdrop-blur-md text-white text-sm font-bold tracking-wide px-4 py-2 rounded-lg hover:bg-white hover:text-primary transition-colors">View
+                                Details</button>
                         </div>
-                        
+
                         <div class="card-popup p-5 overflow-hidden text-left">
                             <div class="flex items-start gap-4 mb-4">
                                 <div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                                    <img alt="Thanjavur" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvv7fZVOsiU9VUUYH6-sy5nRmG71u1yoAbZXYnm_QGahvxmJtnGxSIuGg65nn9ZpKFy483rmLx1q2fIL-7tIT8zrGjPsoR-7x1kPsCOitfKjyOQHLHEgCRXjL8-1jzqaFN3ttj-pdGM13zE8YCsT9IYnMZvDv00g7jV6SFqBcl14oSjBq7Chy9E2hqfiBtnHuDA9iPLuGoor2ZrO53X4_-M5EEIDePkMrr9rdunxnGCplwEAhjzO-Rxe68"/>
+                                    <img alt="Thanjavur" class="w-full h-full object-cover"
+                                        src="https://lh3.googleusercontent.com/aida/AP1WRLvv7fZVOsiU9VUUYH6-sy5nRmG71u1yoAbZXYnm_QGahvxmJtnGxSIuGg65nn9ZpKFy483rmLx1q2fIL-7tIT8zrGjPsoR-7x1kPsCOitfKjyOQHLHEgCRXjL8-1jzqaFN3ttj-pdGM13zE8YCsT9IYnMZvDv00g7jV6SFqBcl14oSjBq7Chy9E2hqfiBtnHuDA9iPLuGoor2ZrO53X4_-M5EEIDePkMrr9rdunxnGCplwEAhjzO-Rxe68" />
                                 </div>
                                 <div>
                                     <div class="flex items-center gap-1 text-primary font-bold text-[12px] mb-1">
-                                        <span class="material-symbols-outlined text-[14px]">calendar_today</span> 2 Days / 1 Night
+                                        <span class="material-symbols-outlined text-[14px]">calendar_today</span> 2 Days
+                                        / 1 Night
                                     </div>
                                     <div class="text-primary text-base font-bold">Starting From</div>
-                                    <div class="text-primary text-3xl font-bold">₹8,299 <span class="text-[12px] font-normal text-text-muted">/ Person</span></div>
+                                    <div class="text-primary text-3xl font-bold">₹8,299 <span
+                                            class="text-[12px] font-normal text-text-muted">/ Person</span></div>
                                 </div>
                             </div>
                             <div class="space-y-2 mb-4">
-                                <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Big Temple Architecture Tour</div>
-                                <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Art Gallery Access</div>
-                                <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">check</span> Boutique Hotel Stay</div>
+                                <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                        class="material-symbols-outlined text-primary text-[16px]">verified</span> Big
+                                    Temple Architecture Tour</div>
+                                <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                        class="material-symbols-outlined text-primary text-[16px]">verified</span> Art
+                                    Gallery Access</div>
+                                <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                        class="material-symbols-outlined text-primary text-[16px]">check</span> Boutique
+                                    Hotel Stay</div>
                             </div>
-                            <button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book This Trip</button>
-                            <button class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
+                            <button
+                                class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book
+                                This Trip</button>
+                            <button
+                                class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
                         </div>
                     </div>
                 </div>
@@ -389,100 +577,158 @@
                 <h2 class="text-4xl md:text-5xl font-bold text-primary mb-2">Coastal Escapes & Sunset Views</h2>
                 <div class="w-16 h-1 bg-[#2f6388] mx-auto rounded-full"></div>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="package-card relative bg-white rounded-xl p-4 shadow-sm border border-surface-variant hover:border-primary/30 transition-all group cursor-pointer">
-                    <span class="absolute top-6 left-6 z-20 badge-premium px-3 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider">Top Rated</span>
+                <div
+                    class="package-card relative bg-white rounded-xl p-4 shadow-sm border border-surface-variant hover:border-primary/30 transition-all group cursor-pointer">
+                    <span
+                        class="absolute top-6 left-6 z-20 badge-premium px-3 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider">Top
+                        Rated</span>
                     <div class="rounded-lg overflow-hidden h-48 mb-4 relative">
-                        <img alt="Kovalam" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AP1WRLtX3QwN-bqtZGcy_b65VH7YYfPJjMEv0jgqFhX279Ktw7pPy2Zngx3_QAiLCbqi3p6UqtJuqMnNC4x6d9DcBjvBQ05uksgqheTcFM3ULAyrn0561APcvLsmUYdfYLYSf_cOpLq0zHjEwi6X3zlwExfV30Wm1m38Cowss7ME34s1f-zPO7qPTsRp3Yy4PZm4Vly1OvKeBAZeOgcCvluP3DT7yQ2sEF5279d2gfXuElw6LQSJ_a38AvavvO4"/>
+                        <img alt="Kovalam"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src="https://lh3.googleusercontent.com/aida/AP1WRLtX3QwN-bqtZGcy_b65VH7YYfPJjMEv0jgqFhX279Ktw7pPy2Zngx3_QAiLCbqi3p6UqtJuqMnNC4x6d9DcBjvBQ05uksgqheTcFM3ULAyrn0561APcvLsmUYdfYLYSf_cOpLq0zHjEwi6X3zlwExfV30Wm1m38Cowss7ME34s1f-zPO7qPTsRp3Yy4PZm4Vly1OvKeBAZeOgcCvluP3DT7yQ2sEF5279d2gfXuElw6LQSJ_a38AvavvO4" />
                     </div>
                     <h3 class="text-3xl font-bold text-primary mb-1">Kovalam Beach Getaway</h3>
-                    <p class="text-base text-text-muted mb-4 flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 3 Days / 2 Nights</p>
-                    <button class="view-trigger-btn w-full border-2 border-primary text-primary text-sm font-bold tracking-wide py-2 rounded-lg">View Package</button>
-                    
+                    <p class="text-base text-text-muted mb-4 flex items-center gap-1"><span
+                            class="material-symbols-outlined text-[16px]">schedule</span> 3 Days / 2 Nights</p>
+                    <button
+                        class="view-trigger-btn w-full border-2 border-primary text-primary text-sm font-bold tracking-wide py-2 rounded-lg">View
+                        Package</button>
+
                     <div class="card-popup p-5 overflow-hidden text-left">
                         <div class="flex items-start gap-4 mb-4">
                             <div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                                <img alt="Kovalam" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLtX3QwN-bqtZGcy_b65VH7YYfPJjMEv0jgqFhX279Ktw7pPy2Zngx3_QAiLCbqi3p6UqtJuqMnNC4x6d9DcBjvBQ05uksgqheTcFM3ULAyrn0561APcvLsmUYdfYLYSf_cOpLq0zHjEwi6X3zlwExfV30Wm1m38Cowss7ME34s1f-zPO7qPTsRp3Yy4PZm4Vly1OvKeBAZeOgcCvluP3DT7yQ2sEF5279d2gfXuElw6LQSJ_a38AvavvO4"/>
+                                <img alt="Kovalam" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida/AP1WRLtX3QwN-bqtZGcy_b65VH7YYfPJjMEv0jgqFhX279Ktw7pPy2Zngx3_QAiLCbqi3p6UqtJuqMnNC4x6d9DcBjvBQ05uksgqheTcFM3ULAyrn0561APcvLsmUYdfYLYSf_cOpLq0zHjEwi6X3zlwExfV30Wm1m38Cowss7ME34s1f-zPO7qPTsRp3Yy4PZm4Vly1OvKeBAZeOgcCvluP3DT7yQ2sEF5279d2gfXuElw6LQSJ_a38AvavvO4" />
                             </div>
                             <div>
                                 <div class="flex items-center gap-1 text-primary font-bold text-[12px] mb-1">
-                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 3 Days / 2 Nights
+                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 3 Days / 2
+                                    Nights
                                 </div>
                                 <div class="text-primary text-base font-bold">Starting From</div>
-                                <div class="text-primary text-3xl font-bold">₹12,499 <span class="text-[12px] font-normal text-text-muted">/ Person</span></div>
+                                <div class="text-primary text-3xl font-bold">₹12,499 <span
+                                        class="text-[12px] font-normal text-text-muted">/ Person</span></div>
                             </div>
                         </div>
                         <div class="space-y-2 mb-4">
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Lighthouse Beach Tour</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Sunset Yoga Session</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">check</span> Luxury Sea-View Resort</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span>
+                                Lighthouse Beach Tour</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Sunset
+                                Yoga Session</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">check</span> Luxury
+                                Sea-View Resort</div>
                         </div>
-                        <button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book This Trip</button>
-                        <button class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
+                        <button
+                            class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book
+                            This Trip</button>
+                        <button
+                            class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
                     </div>
                 </div>
 
-                <div class="package-card relative bg-white rounded-xl p-4 shadow-sm border border-surface-variant hover:border-primary/30 transition-all group cursor-pointer">
-                    <span class="absolute top-6 left-6 z-20 badge-premium px-3 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider">Bestseller</span>
+                <div
+                    class="package-card relative bg-white rounded-xl p-4 shadow-sm border border-surface-variant hover:border-primary/30 transition-all group cursor-pointer">
+                    <span
+                        class="absolute top-6 left-6 z-20 badge-premium px-3 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider">Bestseller</span>
                     <div class="rounded-lg overflow-hidden h-48 mb-4 relative">
-                        <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0eKP2uh_WRzbfD2ba76A6yq6qaE6p10OQ4M0PFXsU6u1WfImImGl3b7C5-ANmz-AXVh8AoiaKJtVPS9XAcpajykUckAj8Oyc92vyN5grBBjaTfyOxByCZ-V-Hs3t8YbDkNCuzpk1UwxN3Pta1i4omYePg1SqS_yQ3LXBdqTtytbL6Ji0DxzCd6ivi-Q5m7uILlGqHm02WR6TjsuNV0DYA9tLFWQUkQuJYaoV7sXMWh63opRmW3iW9e8EwJULWBZjhxZbeOzNHuBU')"></div>
+                        <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0eKP2uh_WRzbfD2ba76A6yq6qaE6p10OQ4M0PFXsU6u1WfImImGl3b7C5-ANmz-AXVh8AoiaKJtVPS9XAcpajykUckAj8Oyc92vyN5grBBjaTfyOxByCZ-V-Hs3t8YbDkNCuzpk1UwxN3Pta1i4omYePg1SqS_yQ3LXBdqTtytbL6Ji0DxzCd6ivi-Q5m7uILlGqHm02WR6TjsuNV0DYA9tLFWQUkQuJYaoV7sXMWh63opRmW3iW9e8EwJULWBZjhxZbeOzNHuBU')">
+                        </div>
                     </div>
                     <h3 class="text-3xl font-bold text-primary mb-1">Varkala Cliff & Beach Tour</h3>
-                    <p class="text-base text-text-muted mb-4 flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 2 Days / 1 Night</p>
-                    <button class="view-trigger-btn w-full border-2 border-primary text-primary text-sm font-bold tracking-wide py-2 rounded-lg">View Package</button>
-                    
+                    <p class="text-base text-text-muted mb-4 flex items-center gap-1"><span
+                            class="material-symbols-outlined text-[16px]">schedule</span> 2 Days / 1 Night</p>
+                    <button
+                        class="view-trigger-btn w-full border-2 border-primary text-primary text-sm font-bold tracking-wide py-2 rounded-lg">View
+                        Package</button>
+
                     <div class="card-popup p-5 overflow-hidden text-left">
                         <div class="flex items-start gap-4 mb-4">
                             <div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                                <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0eKP2uh_WRzbfD2ba76A6yq6qaE6p10OQ4M0PFXsU6u1WfImImGl3b7C5-ANmz-AXVh8AoiaKJtVPS9XAcpajykUckAj8Oyc92vyN5grBBjaTfyOxByCZ-V-Hs3t8YbDkNCuzpk1UwxN3Pta1i4omYePg1SqS_yQ3LXBdqTtytbL6Ji0DxzCd6ivi-Q5m7uILlGqHm02WR6TjsuNV0DYA9tLFWQUkQuJYaoV7sXMWh63opRmW3iW9e8EwJULWBZjhxZbeOzNHuBU')"></div>
+                                <div class="w-full h-full bg-cover bg-center"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB0eKP2uh_WRzbfD2ba76A6yq6qaE6p10OQ4M0PFXsU6u1WfImImGl3b7C5-ANmz-AXVh8AoiaKJtVPS9XAcpajykUckAj8Oyc92vyN5grBBjaTfyOxByCZ-V-Hs3t8YbDkNCuzpk1UwxN3Pta1i4omYePg1SqS_yQ3LXBdqTtytbL6Ji0DxzCd6ivi-Q5m7uILlGqHm02WR6TjsuNV0DYA9tLFWQUkQuJYaoV7sXMWh63opRmW3iW9e8EwJULWBZjhxZbeOzNHuBU')">
+                                </div>
                             </div>
                             <div>
                                 <div class="flex items-center gap-1 text-primary font-bold text-[12px] mb-1">
-                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 2 Days / 1 Night
+                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 2 Days / 1
+                                    Night
                                 </div>
                                 <div class="text-primary text-base font-bold">Starting From</div>
-                                <div class="text-primary text-3xl font-bold">₹8,999 <span class="text-[12px] font-normal text-text-muted">/ Person</span></div>
+                                <div class="text-primary text-3xl font-bold">₹8,999 <span
+                                        class="text-[12px] font-normal text-text-muted">/ Person</span></div>
                             </div>
                         </div>
                         <div class="space-y-2 mb-4">
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Cliff-side Dinner</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Surfing Lesson</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">check</span> Boutique Resort Stay</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span>
+                                Cliff-side Dinner</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Surfing
+                                Lesson</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">check</span> Boutique
+                                Resort Stay</div>
                         </div>
-                        <button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book This Trip</button>
-                        <button class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
+                        <button
+                            class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book
+                            This Trip</button>
+                        <button
+                            class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
                     </div>
                 </div>
 
-                <div class="package-card relative bg-white rounded-xl p-4 shadow-sm border border-surface-variant hover:border-primary/30 transition-all group cursor-pointer">
+                <div
+                    class="package-card relative bg-white rounded-xl p-4 shadow-sm border border-surface-variant hover:border-primary/30 transition-all group cursor-pointer">
                     <div class="rounded-lg overflow-hidden h-48 mb-4 relative">
-                        <img alt="Kanyakumari" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida/AP1WRLvQt8vWIP1jHg1SlDHd_c5jt_XOCeJndA6O5W9I4ELqKI-EgsQKXA4Ioz2UaGberu8CYwbkQFZvovKoSmdzykv2xesH6GxoqMclV84Xc5npWghyulk0hr0gRnrIyCSWXcJeLvmuL_yZSct-J9dE4XdTK6amkA5J0qFNltkjIuVK4IFe9dv6331xz8970ukz6AWNKY7KB_DAx56FaTVk1kYRcXCn-oHYyZgAxxj85nitBizcZdsIr-MN9Q"/>
+                        <img alt="Kanyakumari"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            src="https://lh3.googleusercontent.com/aida/AP1WRLvQt8vWIP1jHg1SlDHd_c5jt_XOCeJndA6O5W9I4ELqKI-EgsQKXA4Ioz2UaGberu8CYwbkQFZvovKoSmdzykv2xesH6GxoqMclV84Xc5npWghyulk0hr0gRnrIyCSWXcJeLvmuL_yZSct-J9dE4XdTK6amkA5J0qFNltkjIuVK4IFe9dv6331xz8970ukz6AWNKY7KB_DAx56FaTVk1kYRcXCn-oHYyZgAxxj85nitBizcZdsIr-MN9Q" />
                     </div>
                     <h3 class="text-3xl font-bold text-primary mb-1">Kanyakumari Coastal Exp.</h3>
-                    <p class="text-base text-text-muted mb-4 flex items-center gap-1"><span class="material-symbols-outlined text-[16px]">schedule</span> 2 Days / 1 Night</p>
-                    <button class="view-trigger-btn w-full border-2 border-primary text-primary text-sm font-bold tracking-wide py-2 rounded-lg">View Package</button>
-                    
+                    <p class="text-base text-text-muted mb-4 flex items-center gap-1"><span
+                            class="material-symbols-outlined text-[16px]">schedule</span> 2 Days / 1 Night</p>
+                    <button
+                        class="view-trigger-btn w-full border-2 border-primary text-primary text-sm font-bold tracking-wide py-2 rounded-lg">View
+                        Package</button>
+
                     <div class="card-popup p-5 overflow-hidden text-left">
                         <div class="flex items-start gap-4 mb-4">
                             <div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                                <img alt="Kanyakumari" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLvQt8vWIP1jHg1SlDHd_c5jt_XOCeJndA6O5W9I4ELqKI-EgsQKXA4Ioz2UaGberu8CYwbkQFZvovKoSmdzykv2xesH6GxoqMclV84Xc5npWghyulk0hr0gRnrIyCSWXcJeLvmuL_yZSct-J9dE4XdTK6amkA5J0qFNltkjIuVK4IFe9dv6331xz8970ukz6AWNKY7KB_DAx56FaTVk1kYRcXCn-oHYyZgAxxj85nitBizcZdsIr-MN9Q"/>
+                                <img alt="Kanyakumari" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida/AP1WRLvQt8vWIP1jHg1SlDHd_c5jt_XOCeJndA6O5W9I4ELqKI-EgsQKXA4Ioz2UaGberu8CYwbkQFZvovKoSmdzykv2xesH6GxoqMclV84Xc5npWghyulk0hr0gRnrIyCSWXcJeLvmuL_yZSct-J9dE4XdTK6amkA5J0qFNltkjIuVK4IFe9dv6331xz8970ukz6AWNKY7KB_DAx56FaTVk1kYRcXCn-oHYyZgAxxj85nitBizcZdsIr-MN9Q" />
                             </div>
                             <div>
                                 <div class="flex items-center gap-1 text-primary font-bold text-[12px] mb-1">
-                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 2 Days / 1 Night
+                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 2 Days / 1
+                                    Night
                                 </div>
                                 <div class="text-primary text-base font-bold">Starting From</div>
-                                <div class="text-primary text-3xl font-bold">₹7,999 <span class="text-[12px] font-normal text-text-muted">/ Person</span></div>
+                                <div class="text-primary text-3xl font-bold">₹7,999 <span
+                                        class="text-[12px] font-normal text-text-muted">/ Person</span></div>
                             </div>
                         </div>
                         <div class="space-y-2 mb-4">
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Vivekananda Rock Visit</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Sunrise Viewing</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">check</span> Oceanside Hotel Stay</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span>
+                                Vivekananda Rock Visit</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Sunrise
+                                Viewing</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">check</span> Oceanside
+                                Hotel Stay</div>
                         </div>
-                        <button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book This Trip</button>
-                        <button class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
+                        <button
+                            class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book
+                            This Trip</button>
+                        <button
+                            class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -494,223 +740,343 @@
                     <h2 class="text-4xl md:text-5xl font-bold text-primary">Cruise Through Kerala’s Backwaters</h2>
                     <p class="text-lg text-text-muted mt-2">Luxurious houseboats and tranquil waterways.</p>
                 </div>
-                <button class="glass-panel text-primary border border-primary text-sm font-bold tracking-wide px-6 py-3 rounded-full hover:bg-primary hover:text-white transition-colors">
+                <button
+                    class="glass-panel text-primary border border-primary text-sm font-bold tracking-wide px-6 py-3 rounded-full hover:bg-primary hover:text-white transition-colors">
                     View All Cruises
                 </button>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="package-card relative bg-white rounded-xl overflow-hidden shadow-sm transition-all group cursor-pointer">
-                    <span class="absolute top-4 left-4 z-20 badge-premium px-3 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider">Top Experience</span>
+                <div
+                    class="package-card relative bg-white rounded-xl overflow-hidden shadow-sm transition-all group cursor-pointer">
+                    <span
+                        class="absolute top-4 left-4 z-20 badge-premium px-3 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider">Top
+                        Experience</span>
                     <div class="h-56 overflow-hidden">
-                        <img alt="Alleppey" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AP1WRLtE6BucNzxm3zy0IQ4r-svt54MJHh1D7QMFor9Eu2xyaoQAtYyorxyCplYA4qk2WEcI4ZbIql3fbtVLVq2tBCh7zUMZsdnlXPVdqQW5o9TJu1NhqO388HJ2_5CRaZxm0yVVjzXb7FwahJzYtiepNPdfD404p8KgdsvXuwmCrr198OE_fgciCVID9YwuV7KpkaoeJLGjwHvNhzzNl4vgLjIGDwNbyKC_2IW4r0s4TgB4vCvo-vlujk42NAM"/>
+                        <img alt="Alleppey"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="https://lh3.googleusercontent.com/aida/AP1WRLtE6BucNzxm3zy0IQ4r-svt54MJHh1D7QMFor9Eu2xyaoQAtYyorxyCplYA4qk2WEcI4ZbIql3fbtVLVq2tBCh7zUMZsdnlXPVdqQW5o9TJu1NhqO388HJ2_5CRaZxm0yVVjzXb7FwahJzYtiepNPdfD404p8KgdsvXuwmCrr198OE_fgciCVID9YwuV7KpkaoeJLGjwHvNhzzNl4vgLjIGDwNbyKC_2IW4r0s4TgB4vCvo-vlujk42NAM" />
                     </div>
                     <div class="p-6">
                         <h3 class="text-3xl font-bold text-primary mb-2">Alleppey Houseboat Exp.</h3>
                         <p class="text-base text-text-muted mb-6">2 Days / 1 Night</p>
-                        <span class="view-trigger-btn text-sm font-bold tracking-wide text-[#2f6388] flex items-center gap-1">Details <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span></span>
+                        <span
+                            class="view-trigger-btn text-sm font-bold tracking-wide text-[#2f6388] flex items-center gap-1">Details
+                            <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span></span>
                     </div>
-                    
+
                     <div class="card-popup p-5 overflow-hidden text-left">
                         <div class="flex items-start gap-4 mb-4">
                             <div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                                <img alt="Alleppey" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AP1WRLtE6BucNzxm3zy0IQ4r-svt54MJHh1D7QMFor9Eu2xyaoQAtYyorxyCplYA4qk2WEcI4ZbIql3fbtVLVq2tBCh7zUMZsdnlXPVdqQW5o9TJu1NhqO388HJ2_5CRaZxm0yVVjzXb7FwahJzYtiepNPdfD404p8KgdsvXuwmCrr198OE_fgciCVID9YwuV7KpkaoeJLGjwHvNhzzNl4vgLjIGDwNbyKC_2IW4r0s4TgB4vCvo-vlujk42NAM"/>
+                                <img alt="Alleppey" class="w-full h-full object-cover"
+                                    src="https://lh3.googleusercontent.com/aida/AP1WRLtE6BucNzxm3zy0IQ4r-svt54MJHh1D7QMFor9Eu2xyaoQAtYyorxyCplYA4qk2WEcI4ZbIql3fbtVLVq2tBCh7zUMZsdnlXPVdqQW5o9TJu1NhqO388HJ2_5CRaZxm0yVVjzXb7FwahJzYtiepNPdfD404p8KgdsvXuwmCrr198OE_fgciCVID9YwuV7KpkaoeJLGjwHvNhzzNl4vgLjIGDwNbyKC_2IW4r0s4TgB4vCvo-vlujk42NAM" />
                             </div>
                             <div>
                                 <div class="flex items-center gap-1 text-primary font-bold text-[12px] mb-1">
-                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 2 Days / 1 Night
+                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 2 Days / 1
+                                    Night
                                 </div>
                                 <div class="text-primary text-base font-bold">Starting From</div>
-                                <div class="text-primary text-3xl font-bold">₹9,999 <span class="text-[12px] font-normal text-text-muted">/ Person</span></div>
+                                <div class="text-primary text-3xl font-bold">₹9,999 <span
+                                        class="text-[12px] font-normal text-text-muted">/ Person</span></div>
                             </div>
                         </div>
                         <div class="space-y-2 mb-4">
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Private Luxury Houseboat</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Authentic Kerala Meals</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">check</span> Village Canal Cruise</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Private
+                                Luxury Houseboat</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Authentic
+                                Kerala Meals</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">check</span> Village
+                                Canal Cruise</div>
                         </div>
-                        <button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book This Trip</button>
-                        <button class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
+                        <button
+                            class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book
+                            This Trip</button>
+                        <button
+                            class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
                     </div>
                 </div>
 
-                <div class="package-card relative bg-white rounded-xl overflow-hidden shadow-sm transition-all group cursor-pointer">
-                    <span class="absolute top-4 left-4 z-20 badge-premium px-3 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider">Most Popular</span>
+                <div
+                    class="package-card relative bg-white rounded-xl overflow-hidden shadow-sm transition-all group cursor-pointer">
+                    <span
+                        class="absolute top-4 left-4 z-20 badge-premium px-3 py-1 rounded-full font-bold text-[11px] uppercase tracking-wider">Most
+                        Popular</span>
                     <div class="h-56 overflow-hidden">
-                        <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-700" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDGwkRevKhgYDyblIz6U0okFHIx67cr-RBx0gUBtMVTf0tHwOjI1cE-9LcB2shBw0XSLtda3YKqokAFO0enllEWJ8MJMFsM_y9d7jbLlUDlvr6NbNSA8llILAiLGlb-xaaan7GnpEzRvnNxaMnp3atBT7-bXqaDANjZCWZHGsyaq9BZW9j9025MhPqsAbrtXNDr6LWbXNvzoXU4QGbTaoFmQFdvORr7bjxPABO2499cq4smtkP--ELLQyYzHX0OXlGwZjGfsfsUPR0')"></div>
+                        <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-700"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDGwkRevKhgYDyblIz6U0okFHIx67cr-RBx0gUBtMVTf0tHwOjI1cE-9LcB2shBw0XSLtda3YKqokAFO0enllEWJ8MJMFsM_y9d7jbLlUDlvr6NbNSA8llILAiLGlb-xaaan7GnpEzRvnNxaMnp3atBT7-bXqaDANjZCWZHGsyaq9BZW9j9025MhPqsAbrtXNDr6LWbXNvzoXU4QGbTaoFmQFdvORr7bjxPABO2499cq4smtkP--ELLQyYzHX0OXlGwZjGfsfsUPR0')">
+                        </div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-3xl font-bold text-primary mb-2">Kumarakom Retreat</h3>
                         <p class="text-base text-text-muted mb-6">3 Days / 2 Nights</p>
-                        <span class="view-trigger-btn text-sm font-bold tracking-wide text-[#2f6388] flex items-center gap-1">Details <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span></span>
+                        <span
+                            class="view-trigger-btn text-sm font-bold tracking-wide text-[#2f6388] flex items-center gap-1">Details
+                            <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span></span>
                     </div>
-                    
+
                     <div class="card-popup p-5 overflow-hidden text-left">
                         <div class="flex items-start gap-4 mb-4">
                             <div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                                <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDGwkRevKhgYDyblIz6U0okFHIx67cr-RBx0gUBtMVTf0tHwOjI1cE-9LcB2shBw0XSLtda3YKqokAFO0enllEWJ8MJMFsM_y9d7jbLlUDlvr6NbNSA8llILAiLGlb-xaaan7GnpEzRvnNxaMnp3atBT7-bXqaDANjZCWZHGsyaq9BZW9j9025MhPqsAbrtXNDr6LWbXNvzoXU4QGbTaoFmQFdvORr7bjxPABO2499cq4smtkP--ELLQyYzHX0OXlGwZjGfsfsUPR0')"></div>
+                                <div class="w-full h-full bg-cover bg-center"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDGwkRevKhgYDyblIz6U0okFHIx67cr-RBx0gUBtMVTf0tHwOjI1cE-9LcB2shBw0XSLtda3YKqokAFO0enllEWJ8MJMFsM_y9d7jbLlUDlvr6NbNSA8llILAiLGlb-xaaan7GnpEzRvnNxaMnp3atBT7-bXqaDANjZCWZHGsyaq9BZW9j9025MhPqsAbrtXNDr6LWbXNvzoXU4QGbTaoFmQFdvORr7bjxPABO2499cq4smtkP--ELLQyYzHX0OXlGwZjGfsfsUPR0')">
+                                </div>
                             </div>
                             <div>
                                 <div class="flex items-center gap-1 text-primary font-bold text-[12px] mb-1">
-                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 3 Days / 2 Nights
+                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 3 Days / 2
+                                    Nights
                                 </div>
                                 <div class="text-primary text-base font-bold">Starting From</div>
-                                <div class="text-primary text-3xl font-bold">₹13,499 <span class="text-[12px] font-normal text-text-muted">/ Person</span></div>
+                                <div class="text-primary text-3xl font-bold">₹13,499 <span
+                                        class="text-[12px] font-normal text-text-muted">/ Person</span></div>
                             </div>
                         </div>
                         <div class="space-y-2 mb-4">
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Bird Sanctuary Tour</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Luxury Lake Resort Stay</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">check</span> Traditional Boat Ride</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Bird
+                                Sanctuary Tour</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Luxury
+                                Lake Resort Stay</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">check</span> Traditional
+                                Boat Ride</div>
                         </div>
-                        <button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book This Trip</button>
-                        <button class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
+                        <button
+                            class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book
+                            This Trip</button>
+                        <button
+                            class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
                     </div>
                 </div>
 
-                <div class="package-card relative bg-white rounded-xl overflow-hidden shadow-sm transition-all group cursor-pointer">
+                <div
+                    class="package-card relative bg-white rounded-xl overflow-hidden shadow-sm transition-all group cursor-pointer">
                     <div class="h-56 overflow-hidden">
-                        <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-700" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDMr7L9HDk3G3RNY-xWXKQw8Y-fOO-tFw5x8o8Yh4MpnRIBmI_l-d80VOjS5MMtcx0CivzxSzIj5lJQsxMXLRkxESirgNxikPHy-yXI6EUDol8UGr46nU5r4NMGqTAw0FPYU97Gi7Imfeq0BYmzZrgmqt8BlyZEtJwFwc7AJ9LSx-BLHg8ndTMgfXvBwz9l2EkHnRb82VWgw24wCqu2Qhj3pK1cE2t3Olj-G2_ruww83Wy7WsU09FFqDnewuGvv4J1xYPmBDsyIce0')"></div>
+                        <div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-700"
+                            style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDMr7L9HDk3G3RNY-xWXKQw8Y-fOO-tFw5x8o8Yh4MpnRIBmI_l-d80VOjS5MMtcx0CivzxSzIj5lJQsxMXLRkxESirgNxikPHy-yXI6EUDol8UGr46nU5r4NMGqTAw0FPYU97Gi7Imfeq0BYmzZrgmqt8BlyZEtJwFwc7AJ9LSx-BLHg8ndTMgfXvBwz9l2EkHnRb82VWgw24wCqu2Qhj3pK1cE2t3Olj-G2_ruww83Wy7WsU09FFqDnewuGvv4J1xYPmBDsyIce0')">
+                        </div>
                     </div>
                     <div class="p-6">
                         <h3 class="text-3xl font-bold text-primary mb-2">Kollam Village Tour</h3>
                         <p class="text-base text-text-muted mb-6">2 Days / 1 Night</p>
-                        <span class="view-trigger-btn text-sm font-bold tracking-wide text-[#2f6388] flex items-center gap-1">Details <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span></span>
+                        <span
+                            class="view-trigger-btn text-sm font-bold tracking-wide text-[#2f6388] flex items-center gap-1">Details
+                            <span class="material-symbols-outlined text-[16px]">arrow_right_alt</span></span>
                     </div>
-                    
+
                     <div class="card-popup p-5 overflow-hidden text-left">
                         <div class="flex items-start gap-4 mb-4">
                             <div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
-                                <div class="w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDMr7L9HDk3G3RNY-xWXKQw8Y-fOO-tFw5x8o8Yh4MpnRIBmI_l-d80VOjS5MMtcx0CivzxSzIj5lJQsxMXLRkxESirgNxikPHy-yXI6EUDol8UGr46nU5r4NMGqTAw0FPYU97Gi7Imfeq0BYmzZrgmqt8BlyZEtJwFwc7AJ9LSx-BLHg8ndTMgfXvBwz9l2EkHnRb82VWgw24wCqu2Qhj3pK1cE2t3Olj-G2_ruww83Wy7WsU09FFqDnewuGvv4J1xYPmBDsyIce0')"></div>
+                                <div class="w-full h-full bg-cover bg-center"
+                                    style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDMr7L9HDk3G3RNY-xWXKQw8Y-fOO-tFw5x8o8Yh4MpnRIBmI_l-d80VOjS5MMtcx0CivzxSzIj5lJQsxMXLRkxESirgNxikPHy-yXI6EUDol8UGr46nU5r4NMGqTAw0FPYU97Gi7Imfeq0BYmzZrgmqt8BlyZEtJwFwc7AJ9LSx-BLHg8ndTMgfXvBwz9l2EkHnRb82VWgw24wCqu2Qhj3pK1cE2t3Olj-G2_ruww83Wy7WsU09FFqDnewuGvv4J1xYPmBDsyIce0')">
+                                </div>
                             </div>
                             <div>
                                 <div class="flex items-center gap-1 text-primary font-bold text-[12px] mb-1">
-                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 2 Days / 1 Night
+                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 2 Days / 1
+                                    Night
                                 </div>
                                 <div class="text-primary text-base font-bold">Starting From</div>
-                                <div class="text-primary text-3xl font-bold">₹8,499 <span class="text-[12px] font-normal text-text-muted">/ Person</span></div>
+                                <div class="text-primary text-3xl font-bold">₹8,499 <span
+                                        class="text-[12px] font-normal text-text-muted">/ Person</span></div>
                             </div>
                         </div>
                         <div class="space-y-2 mb-4">
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Ashtamudi Lake Tour</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Cashew Factory Visit</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">check</span> Backwater Homestay</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Ashtamudi
+                                Lake Tour</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Cashew
+                                Factory Visit</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">check</span> Backwater
+                                Homestay</div>
                         </div>
-                        <button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book This Trip</button>
-                        <button class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
+                        <button
+                            class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book
+                            This Trip</button>
+                        <button
+                            class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="max-w-7xl mx-auto px-5 md:px-16 mb-20">
-            <h2 class="text-4xl md:text-5xl font-bold text-primary mb-8 text-center">Walk Through South India’s Rich History</h2>
+            <h2 class="text-4xl md:text-5xl font-bold text-primary mb-8 text-center">Walk Through South India’s Rich
+                History</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-y-8 md:gap-x-6">
-                
-                <div class="package-card relative flex flex-col items-center text-center p-6 bg-surface-light rounded-2xl border border-surface-variant hover:border-primary/50 transition-colors cursor-pointer group">
-                    <span class="absolute top-4 right-4 z-20 badge-premium px-3 py-1 rounded-full font-bold text-[10px] uppercase tracking-wider">Heritage Pick</span>
-                    <div class="w-16 h-16 bg-primary-dark rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <span class="material-symbols-outlined text-white text-3xl">account_balance</span>
+
+                <div
+                    class="package-card relative flex flex-col items-center text-center p-6 bg-surface-light rounded-2xl border border-surface-variant hover:border-primary/50 transition-colors cursor-pointer group">
+                    <span
+                        class="absolute top-4 right-4 z-20 badge-premium px-3 py-1 rounded-full font-bold text-[10px] uppercase tracking-wider">Heritage
+                        Pick</span>
+                    <div class="h-56 overflow-hidden">
+                        <img alt="Mahabalipuram"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="Images/Mahaballi.png" />
                     </div>
                     <h3 class="text-3xl font-bold text-primary mb-2">Mahabalipuram Heritage Tour</h3>
                     <p class="text-base text-text-muted mb-4">2 Days / 1 Night</p>
-                    <span class="view-trigger-btn text-sm font-bold tracking-wide text-primary transition-opacity">Explore Heritage</span>
-                    
+                    <span
+                        class="view-trigger-btn text-sm font-bold tracking-wide text-primary transition-opacity">Explore
+                        Heritage</span>
+
                     <div class="card-popup p-5 overflow-hidden text-left">
                         <div class="flex items-start gap-4 mb-4">
-                            <div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-primary-dark flex items-center justify-center">
-                                <span class="material-symbols-outlined text-white text-2xl">account_balance</span>
+                            <div
+                                class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-primary-dark flex items-center justify-center">
+                                <div class="w-full h-full bg-cover bg-center"
+                                    style="background-image:url('Images/Mahaballi.png');"></div>
                             </div>
                             <div>
                                 <div class="flex items-center gap-1 text-primary font-bold text-[12px] mb-1">
-                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 2 Days / 1 Night
+                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 2 Days / 1
+                                    Night
                                 </div>
                                 <div class="text-primary text-base font-bold">Starting From</div>
-                                <div class="text-primary text-3xl font-bold">₹8,499 <span class="text-[12px] font-normal text-text-muted">/ Person</span></div>
+                                <div class="text-primary text-3xl font-bold">₹8,499 <span
+                                        class="text-[12px] font-normal text-text-muted">/ Person</span></div>
                             </div>
                         </div>
                         <div class="space-y-2 mb-4">
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Shore Temple Guided Visit</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Sea-Shell Craft Workshop</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">check</span> Boutique Coastal Hotel</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Shore
+                                Temple Guided Visit</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Sea-Shell
+                                Craft Workshop</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">check</span> Boutique
+                                Coastal Hotel</div>
                         </div>
-                        <button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book This Trip</button>
-                        <button class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
+                        <button
+                            class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book
+                            This Trip</button>
+                        <button
+                            class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
                     </div>
                 </div>
 
-                <div class="package-card relative flex flex-col items-center text-center p-6 bg-surface-light rounded-2xl border border-surface-variant hover:border-primary/50 transition-colors cursor-pointer group">
-                    <span class="absolute top-4 right-4 z-20 badge-premium px-3 py-1 rounded-full font-bold text-[10px] uppercase tracking-wider">Bestseller</span>
-                    <div class="w-16 h-16 bg-primary-dark rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <span class="material-symbols-outlined text-white text-3xl">theater_comedy</span>
+                <div
+                    class="package-card relative flex flex-col items-center text-center p-6 bg-surface-light rounded-2xl border border-surface-variant hover:border-primary/50 transition-colors cursor-pointer group">
+                    <span
+                        class="absolute top-4 right-4 z-20 badge-premium px-3 py-1 rounded-full font-bold text-[10px] uppercase tracking-wider">Bestseller</span>
+                    <div class="h-56 overflow-hidden">
+                        <img alt="Kochi fort"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="Images/fort_kochi_streets_kerala_colonial_architecture_with_portuguese_and_dutch.png" />
                     </div>
                     <h3 class="text-3xl font-bold text-primary mb-2">Kochi Cultural Experience</h3>
                     <p class="text-base text-text-muted mb-4">3 Days / 2 Nights</p>
-                    <span class="view-trigger-btn text-sm font-bold tracking-wide text-primary transition-opacity">Explore Culture</span>
-                    
+                    <span
+                        class="view-trigger-btn text-sm font-bold tracking-wide text-primary transition-opacity">Explore
+                        Culture</span>
+
                     <div class="card-popup p-5 overflow-hidden text-left">
                         <div class="flex items-start gap-4 mb-4">
-                            <div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-primary-dark flex items-center justify-center">
-                                <span class="material-symbols-outlined text-white text-2xl">theater_comedy</span>
+                            <div
+                                class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-primary-dark flex items-center justify-center">
+                                <div class="w-full h-full bg-cover bg-center"
+                                    style="background-image:url('Images/fort_kochi_streets_kerala_colonial_architecture_with_portuguese_and_dutch.png');">
+                                </div>
                             </div>
                             <div>
                                 <div class="flex items-center gap-1 text-primary font-bold text-[12px] mb-1">
-                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 3 Days / 2 Nights
+                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 3 Days / 2
+                                    Nights
                                 </div>
                                 <div class="text-primary text-base font-bold">Starting From</div>
-                                <div class="text-primary text-3xl font-bold">₹11,999 <span class="text-[12px] font-normal text-text-muted">/ Person</span></div>
+                                <div class="text-primary text-3xl font-bold">₹11,999 <span
+                                        class="text-[12px] font-normal text-text-muted">/ Person</span></div>
                             </div>
                         </div>
                         <div class="space-y-2 mb-4">
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Kathakali Performance</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Jewish Town Walk</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">check</span> Heritage Hotel Stay</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Kathakali
+                                Performance</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Jewish
+                                Town Walk</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">check</span> Heritage
+                                Hotel Stay</div>
                         </div>
-                        <button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book This Trip</button>
-                        <button class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
+                        <button
+                            class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book
+                            This Trip</button>
+                        <button
+                            class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
                     </div>
                 </div>
 
-                <div class="package-card relative flex flex-col items-center text-center p-6 bg-surface-light rounded-2xl border border-surface-variant hover:border-primary/50 transition-colors cursor-pointer group">
-                    <div class="w-16 h-16 bg-primary-dark rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <span class="material-symbols-outlined text-white text-3xl">diversity_2</span>
+                <div
+                    class="package-card relative flex flex-col items-center text-center p-6 bg-surface-light rounded-2xl border border-surface-variant hover:border-primary/50 transition-colors cursor-pointer group">
+                    <div class="h-56 overflow-hidden">
+                        <img alt="Chettinad"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                            src="Images/chettinadu.jpg" />
                     </div>
                     <h3 class="text-3xl font-bold text-primary mb-2">Chettinad Heritage Journey</h3>
                     <p class="text-base text-text-muted mb-4">2 Days / 1 Night</p>
-                    <span class="view-trigger-btn text-sm font-bold tracking-wide text-primary transition-opacity">Explore Journey</span>
-                    
+                    <span
+                        class="view-trigger-btn text-sm font-bold tracking-wide text-primary transition-opacity">Explore
+                        Journey</span>
+
                     <div class="card-popup p-5 overflow-hidden text-left">
                         <div class="flex items-start gap-4 mb-4">
-                            <div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-primary-dark flex items-center justify-center">
-                                <span class="material-symbols-outlined text-white text-2xl">diversity_2</span>
+                            <div
+                                class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0 bg-primary-dark flex items-center justify-center">
+                                <div class="w-full h-full bg-cover bg-center"
+                                    style="background-image:url('Images/chettinadu.jpg');"></div>
                             </div>
                             <div>
                                 <div class="flex items-center gap-1 text-primary font-bold text-[12px] mb-1">
-                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 2 Days / 1 Night
+                                    <span class="material-symbols-outlined text-[14px]">calendar_today</span> 2 Days / 1
+                                    Night
                                 </div>
                                 <div class="text-primary text-base font-bold">Starting From</div>
-                                <div class="text-primary text-3xl font-bold">₹9,999 <span class="text-[12px] font-normal text-text-muted">/ Person</span></div>
+                                <div class="text-primary text-3xl font-bold">₹9,999 <span
+                                        class="text-[12px] font-normal text-text-muted">/ Person</span></div>
                             </div>
                         </div>
                         <div class="space-y-2 mb-4">
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Mansion Heritage Tour</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">verified</span> Chettinad Spiced Meal</div>
-                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span class="material-symbols-outlined text-primary text-[16px]">check</span> Palace Stay Experience</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Mansion
+                                Heritage Tour</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">verified</span> Chettinad
+                                Spiced Meal</div>
+                            <div class="flex items-center gap-2 text-text-muted text-[13px] text-base"><span
+                                    class="material-symbols-outlined text-primary text-[16px]">check</span> Palace Stay
+                                Experience</div>
                         </div>
-                        <button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book This Trip</button>
-                        <button class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
+                        <button
+                            class="w-full bg-primary text-white py-3 rounded-xl font-bold text-[14px] shadow-lg hover:bg-primary-dark transition-colors">Book
+                            This Trip</button>
+                        <button
+                            class="md:hidden w-full mt-2 text-primary text-[12px] font-bold py-1 close-modal">Close</button>
                     </div>
                 </div>
             </div>
         </section>
 
         <section class="max-w-4xl mx-auto px-5 md:px-16 text-center py-20 border-t border-surface-variant">
-            <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight text-primary mb-6">Ready To Plan Your Journey?</h2>
+            <h2 class="text-4xl md:text-6xl font-extrabold tracking-tight text-primary mb-6">Ready To Plan Your Journey?
+            </h2>
             <div class="flex flex-col md:flex-row justify-center gap-4">
-                <button class="bg-primary text-white text-sm font-bold tracking-wide px-8 py-4 rounded-full hover:bg-primary-dark transition-all">
+                <button
+                    class="bg-primary text-white text-sm font-bold tracking-wide px-8 py-4 rounded-full hover:bg-primary-dark transition-all">
                     Sign In To Continue
                 </button>
-                <button class="bg-white border border-primary text-primary text-sm font-bold tracking-wide px-8 py-4 rounded-full hover:bg-surface transition-colors">
+                <button
+                    class="bg-white border border-primary text-primary text-sm font-bold tracking-wide px-8 py-4 rounded-full hover:bg-surface transition-colors">
                     Contact Travel Expert
                 </button>
             </div>
@@ -720,14 +1086,18 @@
     <footer class="w-full pt-20 pb-8 bg-primary">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 px-5 md:px-16 max-w-7xl mx-auto">
             <div class="col-span-1">
-                <span class="text-3xl font-bold text-white block mb-4">KALAYA</span>
-                <p class="text-base text-[#80bea6] opacity-80">© 2024 Kalaya Luxury South India. All rights reserved.</p>
+                <span class="text-3xl font-bold text-white block mb-4">Wandering South</span>
+                <p class="text-base text-[#80bea6] opacity-80">© 2024 wanderingsouth. All rights reserved.</p>
             </div>
             <div class="col-span-1 md:col-span-3 flex flex-col md:flex-row justify-end gap-6 md:gap-12 pt-4 md:pt-0">
-                <a class="text-base text-[#80bea6] hover:text-white transition-opacity opacity-80" href="#">Privacy Policy</a>
-                <a class="text-base text-[#80bea6] hover:text-white transition-opacity opacity-80" href="#">Terms of Service</a>
-                <a class="text-base text-[#80bea6] hover:text-white transition-opacity opacity-80" href="#">Contact Us</a>
-                <a class="text-base text-[#80bea6] hover:text-white transition-opacity opacity-80" href="#">Sustainability</a>
+                <a class="text-base text-[#80bea6] hover:text-white transition-opacity opacity-80" href="#">Privacy
+                    Policy</a>
+                <a class="text-base text-[#80bea6] hover:text-white transition-opacity opacity-80" href="#">Terms of
+                    Service</a>
+                <a class="text-base text-[#80bea6] hover:text-white transition-opacity opacity-80" href="#">Contact
+                    Us</a>
+                <a class="text-base text-[#80bea6] hover:text-white transition-opacity opacity-80"
+                    href="#">Sustainability</a>
             </div>
         </div>
     </footer>
@@ -764,4 +1134,5 @@
         });
     </script>
 </body>
+
 </html>
